@@ -9,4 +9,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <!--fragment subject detail-->
+    <string name="fragment_subject_detail_records_text">공부 기록</string>
+    <!-- common String -->
+    <string name="text_dynamic_null">NULL</string>
+    <string name="image_static">static</string>
+    <!---->
 </resources>

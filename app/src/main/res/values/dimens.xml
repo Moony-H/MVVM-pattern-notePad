@@ -2,10 +2,27 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- fragment memo-->
+    <!--size-->
     <dimen name="fragment_memo_title_text_size">30sp</dimen>
     <dimen name="fragment_memo_contents_text_size">20sp</dimen>
+
+    <!--margin-->
     <dimen name="fragment_memo_edit_text_margin_top">10dp</dimen>
     <dimen name="fragment_memo_edit_text_margin_left">10dp</dimen>
     <dimen name="fragment_memo_edit_text_margin_right">10dp</dimen>
     <dimen name="fragment_memo_edit_text_margin_bottom">10dp</dimen>
+
+    <!-- fragment subject detail-->
+    <!--size-->
+    <dimen name="fragment_subject_detail_name_text_size">35sp</dimen>
+
+    <!--marin-->
+    <dimen name="fragment_subject_detail_sub_layout_margin_all">15dp</dimen>
+
+
+
+    <!-- item subject-->
+    <dimen name="item_subject_name_text_size">25sp</dimen>
+    <dimen name="item_subject_content_margin_left">30dp</dimen>
+    <dimen name="item_subject_content_margin_top">10dp</dimen>
 </resources>
