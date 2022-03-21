@@ -12,6 +12,6 @@ interface SubjectDao {
     @Delete
     fun delete(subject: Subject)
 
-    @Query("SELECT * FROM Record")
-    fun getAll():LiveData<List<Subject>>
+    @Query("SELECT * FROM Subject")
+    fun getAll():List<Subject>
 }

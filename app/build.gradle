@@ -8,7 +8,7 @@ plugins {
     id 'com.google.devtools.ksp'
 
 }
-apply plugin: 'kotlin-kapt'
+//apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 android {
     compileSdkVersion 31
@@ -71,10 +71,9 @@ dependencies {
     def roomVersion = "2.4.2"
 
     implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    //kapt("androidx.room:room-compiler:$roomVersion")
 
-    //Kotlin annotation processing tool (kapt)
-    kapt("androidx.room:room-compiler:$roomVersion")
+
     //Kotlin Symbolic Processing (KSP)
     ksp("androidx.room:room-compiler:$roomVersion")
 

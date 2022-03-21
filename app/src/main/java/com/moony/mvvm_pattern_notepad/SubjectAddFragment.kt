@@ -49,6 +49,14 @@ class SubjectAddFragment:Fragment() {
 
         }
 
+        binding.fragmentSubjectAddSaveButton.setOnClickListener {
+            subjectAddViewModel.insertSubject()
+        }
+
+        binding.testButton.setOnClickListener {
+            subjectAddViewModel.getAll()
+        }
+
         return binding.root
 
     }

@@ -1,13 +1,15 @@
 package com.moony.mvvm_pattern_notepad.data
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+@Database(entities = [Subject::class], version = 1)
 abstract class SubjectDataBase : RoomDatabase() {
     abstract fun subjectDao():SubjectDao
     companion object{
-        @Volatile private var instance:SubjectDataBase?=null
+        private var instance:SubjectDataBase?=null
 
         @Synchronized
         fun getInstance(context: Context):SubjectDataBase?{
@@ -22,7 +24,7 @@ abstract class SubjectDataBase : RoomDatabase() {
 
                 }
             }
-            return instance!!
+            return instance
 
         }
     }
