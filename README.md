@@ -1,5 +1,9 @@
 # MVVM-pattern-notePad
 
+
+
+
+
 * 이 Repogitory는 MVVM 패턴을 연습하기 위한 연습용 Project 입니다.
 * **개발 중인 미완성 App 입니다.**
 
@@ -9,9 +13,13 @@
 
 ## 프로젝트 설명
 
+
+
 공부 했던 기록을 달력에 적으며 기록할 수 있는 앱 입니다.
 
 과목 별로 어느 날짜에 얼마 만큼 공부 했는 지 볼 수 있고, 날짜 별로 무엇을 공부 했었는지 볼수 있는 앱 입니다.
+
+
 
 ## Specification
 
@@ -27,13 +35,19 @@
 
 ## 규칙
 
+
+
 1. View에 속하는 Activity, Fragment, xml은 그저 View Model을 **관찰** 합니다.
 
    관찰에 사용된 것은 **Live data**, **Data Binding** 입니다.
 
    
 
-   *fragment_subject_add.xml (Data Binding 사용 예시) 
+   
+   
+   *fragment_subject_add.xml (Data Binding 사용 예시)  
+   
+   https://github.com/Moony-H/MVVM-pattern-notePad/blob/master/app/src/main/res/layout/fragment_subject_add.xml
    
    ``` xml
    <layout
@@ -89,7 +103,15 @@
    </layout>
    ```
    
+   
+   
+   
+   
+   
+   
    *SubjectAddViewModel.kt (Live Data 사용 예시)
+   
+   https://github.com/Moony-H/MVVM-pattern-notePad/blob/master/app/src/main/java/com/moony/mvvm_pattern_notepad/viewModels/SubjectAddFragmentViewModel.kt
    
    ``` kotlin
    class SubjectAddFragmentViewModel:ViewModel() {
@@ -105,6 +127,10 @@
    
    }
    ```
+   
+   
+   
+   
    
    실행 화면
    
