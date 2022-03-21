@@ -14,12 +14,10 @@ class SubjectAddFragmentViewModel:ViewModel() {
     val currentValue= MutableLiveData<Subject>()
 
     init {
-        currentValue.value?.color=
-            ApplicationContext.getApplicationContext().resources.getStringArray(R.array.colors)[0]
-        currentValue.value?.name=""
-        currentValue.value?.importance= 0.0F
-        currentValue.value?.memo=""
-        currentValue.value?.color_int=Color.parseColor(currentValue.value?.color)
+        val color=ApplicationContext.getApplicationContext().resources.getStringArray(R.array.colors)[0]
+        val temp=Subject("",0.0F,"",color,Color.parseColor(color))
+        currentValue.value=temp
+
     }
 
 

@@ -22,6 +22,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_margin="@dimen/fragment_subject_detail_sub_layout_margin_all"
             android:background="@drawable/rectangle_round"
+            android:backgroundTint="@{viewModel.currentValue.color_int}"
 
 
             >
@@ -123,7 +124,8 @@
                 android:layout_marginRight="27dp"
                 android:layout_marginEnd="27dp"
                 android:background="@color/white"
-                 />
+                android:text="@={viewModel.currentValue.memo}"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

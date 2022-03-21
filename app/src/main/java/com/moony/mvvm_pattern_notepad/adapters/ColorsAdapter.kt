@@ -13,6 +13,7 @@ import com.moony.mvvm_pattern_notepad.databinding.SourceItemColorBinding
 
 class ColorsAdapter(
     private val colors:List<String>,
+    private val toDo:(String)->Unit
     ):
     RecyclerView.Adapter<ColorsAdapter.ViewHolder>() {
 
@@ -29,15 +30,7 @@ class ColorsAdapter(
 
         holder.imageView.setColorFilter(Color.parseColor(colors[position]))
         holder.binding.setClickListener {
-            Log.d("recyclerView","item clicked $position")
-            holder.binding.subjectViewModel?.currentValue?.value?.color=colors[position]
-            holder.binding.subjectViewModel?.let {vm->
-                vm.currentValue.value?.let { Log.d("success",it.color) }?:run{
-                    Log.d("value","fail")
-                }
-            }?:run{
-                Log.d("model","fail")
-            }
+            toDo(colors[position])
 
         }
     }

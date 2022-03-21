@@ -1,19 +1,17 @@
 package com.moony.mvvm_pattern_notepad.data
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface SubjectDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(subject:Subject)
 
     @Delete
     fun delete(subject: Subject)
 
     @Query("SELECT * FROM Record")
-    fun findSubjects():List<Subject>
+    fun getAll():LiveData<List<Subject>>
 }

@@ -22,7 +22,7 @@ abstract class SubjectDataBase : RoomDatabase() {
 
                 }
             }
-            return instance
+            return instance!!
 
         }
     }

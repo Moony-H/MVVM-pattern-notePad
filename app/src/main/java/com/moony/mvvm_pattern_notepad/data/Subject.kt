@@ -12,6 +12,7 @@ data class Subject(
         var memo:String,
         var color: String,
         var color_int:Int
+
 ){
 
 }

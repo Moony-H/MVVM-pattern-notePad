@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.moony.mvvm_pattern_notepad.adapters.ColorsAdapter
+import com.moony.mvvm_pattern_notepad.data.Subject
 import com.moony.mvvm_pattern_notepad.databinding.FragmentSubjectAddBinding
 
 import com.moony.mvvm_pattern_notepad.viewModels.SubjectAddFragmentViewModel
@@ -32,18 +33,22 @@ class SubjectAddFragment:Fragment() {
         ).apply {
             viewModel=subjectAddViewModel
         }
+        binding.lifecycleOwner=this
         binding.fragmentSubjectAddColorListView.layoutManager=GridLayoutManager(context,2,GridLayoutManager.HORIZONTAL,false)
         val colorListConvert= mutableListOf<String>()
         val colorList=ApplicationContext.getApplicationContext().resources.getStringArray(R.array.colors)
         for(i in colorList){
             colorListConvert.add(i)
         }
-        binding.fragmentSubjectAddColorListView.adapter=ColorsAdapter(colorListConvert)
-        subjectAddViewModel.currentValue.observe(viewLifecycleOwner){
-            binding.fragmentSubjectAddSubLayout.setBackgroundColor(Color.parseColor(it.color))
-            Log.d("color changed", it.color)
+        binding.fragmentSubjectAddColorListView.adapter=ColorsAdapter(colorListConvert){
+            subjectAddViewModel.currentValue.value?.apply {
+                val temp= Subject(name,importance,memo,it,Color.parseColor(it))
+                subjectAddViewModel.currentValue.value=temp
+            }
+
 
         }
+
         return binding.root
 
     }
