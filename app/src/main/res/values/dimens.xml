@@ -14,7 +14,7 @@
 
     <!-- fragment subject detail-->
     <!--size-->
-    <dimen name="fragment_subject_detail_name_text_size">35sp</dimen>
+    <dimen name="fragment_subject_detail_and_name_text_size">35sp</dimen>
 
     <!--marin-->
     <dimen name="fragment_subject_detail_sub_layout_margin_all">15dp</dimen>

@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.moony.mvvm_pattern_notepad.databinding.FragmentCalendarBinding
 
-import com.moony.mvvm_pattern_notepad.databinding.FragmentListBinding
-
-class ListFragment: Fragment() {
-
-    private var _binding: FragmentListBinding?=null
+class CalendarFragment:Fragment() {
+    private var _binding: FragmentCalendarBinding?=null
     private val binding get()=_binding!!
 
 
@@ -22,7 +18,7 @@ class ListFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentListBinding.inflate(inflater, container, false)
+        _binding = FragmentCalendarBinding.inflate(inflater, container, false)
         return binding.root
     }
 
