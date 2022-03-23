@@ -14,4 +14,8 @@ interface SubjectDao {
 
     @Query("SELECT * FROM Subject")
     fun getAll():List<Subject>
+
+    @Query("SELECT * FROM Subject WHERE name=:name")
+    fun searchBySubjectName(name:String):Subject
+
 }

@@ -3,7 +3,7 @@
     package="com.moony.mvvm_pattern_notepad">
 
     <application
-        android:name=".ApplicationContext"
+        android:name=".RecordApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,10 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMpatternnotePad">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.MVVMpatternnotePad.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

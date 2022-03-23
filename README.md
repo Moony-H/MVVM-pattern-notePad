@@ -27,7 +27,7 @@
 | -------------------- | ------------------------------------------------------------ |
 | Architecture         | MVVM                                                         |
 | Jetpack              | DataBinding, ViewBinding, LiveData, ViewModel, lifeCycle, Room |
-| Dependency Injection | dagger-Hilt **(추가 예정)**                                  |
+| Dependency Injection | dagger-Hilt                                                  |
 | Design Pattern       | Repository Pattern                                           |
 | Async                | Coroutine                                                    |
 

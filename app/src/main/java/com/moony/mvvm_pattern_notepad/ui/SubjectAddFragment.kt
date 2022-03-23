@@ -1,24 +1,27 @@
-package com.moony.mvvm_pattern_notepad
+package com.moony.mvvm_pattern_notepad.ui
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.moony.mvvm_pattern_notepad.RecordApplication
+import com.moony.mvvm_pattern_notepad.R
 import com.moony.mvvm_pattern_notepad.adapters.ColorsAdapter
 import com.moony.mvvm_pattern_notepad.data.Subject
 import com.moony.mvvm_pattern_notepad.databinding.FragmentSubjectAddBinding
 
-import com.moony.mvvm_pattern_notepad.viewModels.SubjectAddFragmentViewModel
+import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SubjectAddFragment:Fragment() {
-    private val subjectAddViewModel:SubjectAddFragmentViewModel by viewModels()
+    private val subjectViewModel:SubjectViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,30 +34,31 @@ class SubjectAddFragment:Fragment() {
             container,
             false
         ).apply {
-            viewModel=subjectAddViewModel
+            viewModel=subjectViewModel
         }
         binding.lifecycleOwner=this
         binding.fragmentSubjectAddColorListView.layoutManager=GridLayoutManager(context,2,GridLayoutManager.HORIZONTAL,false)
         val colorListConvert= mutableListOf<String>()
-        val colorList=ApplicationContext.getApplicationContext().resources.getStringArray(R.array.colors)
+        val colorList=
+            RecordApplication.getApplicationContext().resources.getStringArray(R.array.colors)
         for(i in colorList){
             colorListConvert.add(i)
         }
         binding.fragmentSubjectAddColorListView.adapter=ColorsAdapter(colorListConvert){
-            subjectAddViewModel.currentValue.value?.apply {
+            subjectViewModel.currentValue.value?.apply {
                 val temp= Subject(name,importance,memo,it,Color.parseColor(it))
-                subjectAddViewModel.currentValue.value=temp
+                subjectViewModel.currentValue.value=temp
             }
 
 
         }
 
         binding.fragmentSubjectAddSaveButton.setOnClickListener {
-            subjectAddViewModel.insertSubject()
+            subjectViewModel.insertSubject()
         }
 
         binding.testButton.setOnClickListener {
-            subjectAddViewModel.getAll()
+            subjectViewModel.getAll()
         }
 
         return binding.root

@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/activity_main_fragment"
-        android:name="com.moony.mvvm_pattern_notepad.SubjectAddFragment"
+        android:name="com.moony.mvvm_pattern_notepad.ui.SubjectAddFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
