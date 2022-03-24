@@ -6,6 +6,7 @@
         <variable
             name="viewModel"
             type="com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel" />
+
     </data>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

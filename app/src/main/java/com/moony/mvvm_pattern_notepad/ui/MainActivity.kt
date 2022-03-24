@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
+import com.moony.mvvm_pattern_notepad.R
 import com.moony.mvvm_pattern_notepad.databinding.ActivityMainBinding
 import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportFragmentManager.commit {
+            add(R.id.activity_main_fragment_container,SubjectAddFragment())
+            addToBackStack("SubjectAddFragment")
+        }
 
 
     }

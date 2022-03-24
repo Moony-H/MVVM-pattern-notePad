@@ -20,12 +20,12 @@ class SubjectViewModel @Inject constructor(
     ):ViewModel(){
 
     val currentValue= MutableLiveData<Subject>()
+    val colorList: List<String> =RecordApplication.getApplicationContext().resources.getStringArray(R.array.colors).toList()
 
     init {
-        val color=RecordApplication.getApplicationContext().resources.getStringArray(R.array.colors)[0]
+        val color=colorList[0]
         val temp=Subject("",0.0F,"",color,Color.parseColor(color))
         currentValue.value=temp
-
     }
 
     fun insertSubject(){
@@ -47,8 +47,23 @@ class SubjectViewModel @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch{
             val temp=subjectRepository.getAllSubject()
             Log.d("insert Complete","${temp.size}")
+            for(i in temp){
+                Log.d("subject is", i.name)
+                Log.d("subject color is","${i.color}")
+            }
         }
     }
+
+    fun setColor(string: String){
+        currentValue.value?.let {
+            val subject=Subject(it.name,it.importance,it.memo,string,Color.parseColor(string))
+            currentValue.value=subject
+        }
+
+
+
+    }
+
 
 
 }
