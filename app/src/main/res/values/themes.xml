@@ -14,9 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
     <style name="Theme.MVVMpatternnotePad.NoActionBar">
+        <item name="colorPrimary">@color/color_14</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="Theme.MVVMpatternnotePad.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

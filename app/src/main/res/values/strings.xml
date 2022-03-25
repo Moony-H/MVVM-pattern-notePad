@@ -16,5 +16,9 @@
     <!-- common String -->
     <string name="text_dynamic_null">NULL</string>
     <string name="image_static">static</string>
-    <!---->
+    <!-- menu String-->
+    <string name="menu_tab_title_1">일정</string>
+    <string name="menu_tab_title_2">과목</string>
+    <string name="menu_tab_title_3">기록</string>
+
 </resources>

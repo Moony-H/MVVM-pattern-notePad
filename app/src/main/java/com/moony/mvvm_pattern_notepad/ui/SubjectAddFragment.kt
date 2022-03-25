@@ -21,9 +21,9 @@ import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SubjectAddFragment:Fragment() {
+class SubjectAddFragment:Fragment(),View.OnClickListener{
     private val subjectViewModel:SubjectViewModel by activityViewModels()
-
+    private lateinit var binding:FragmentSubjectAddBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,12 +31,13 @@ class SubjectAddFragment:Fragment() {
     ): View {
 
         //data binding
-        val binding=DataBindingUtil.inflate<FragmentSubjectAddBinding>(
+        binding=DataBindingUtil.inflate<FragmentSubjectAddBinding>(
             inflater,
             R.layout.fragment_subject_add,
             container,
             false
         ).apply {
+            //데이터 바인딩에 viewModel 설정
             viewModel=subjectViewModel
         }
 
@@ -51,23 +52,13 @@ class SubjectAddFragment:Fragment() {
             false
         )
 
-        //RecyclerView의 item이 클릭시 할 행동 세팅
         val adapter=ColorsAdapter(subjectViewModel)
         adapter.submitList(subjectViewModel.colorList)
         binding.fragmentSubjectAddColorListView.adapter=adapter
 
-        binding.fragmentSubjectAddSaveButton.setOnClickListener {
-            subjectViewModel.insertSubject()
-        }
-
-        binding.testButton.setOnClickListener {
-            subjectViewModel.getAll()
-            parentFragmentManager.commit {
-                replace(R.id.activity_main_fragment_container,CalendarFragment())
-                addToBackStack("test")
-
-            }
-        }
+        //버튼 click callback 세팅
+        binding.fragmentSubjectAddSaveButton.setOnClickListener(this)
+        binding.testButton.setOnClickListener(this)
 
         return binding.root
 
@@ -76,5 +67,24 @@ class SubjectAddFragment:Fragment() {
     override fun onDetach() {
         Log.d("fragment","onDetach")
         super.onDetach()
+    }
+
+    override fun onClick(view: View?) {
+
+        when(view){
+            binding.fragmentSubjectAddSaveButton->{
+                subjectViewModel.insertSubject()
+
+            }
+            binding.testButton->{
+                subjectViewModel.getAll()
+                parentFragmentManager.commit {
+                    add(R.id.activity_main_fragment_container,CalendarFragment())
+                    addToBackStack("test")
+
+                }
+            }
+        }
+
     }
 }

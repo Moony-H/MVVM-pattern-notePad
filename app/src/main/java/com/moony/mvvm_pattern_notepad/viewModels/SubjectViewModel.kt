@@ -49,7 +49,7 @@ class SubjectViewModel @Inject constructor(
             Log.d("insert Complete","${temp.size}")
             for(i in temp){
                 Log.d("subject is", i.name)
-                Log.d("subject color is","${i.color}")
+                Log.d("subject color is", i.color)
             }
         }
     }

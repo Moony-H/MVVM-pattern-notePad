@@ -10,7 +10,7 @@ import com.moony.mvvm_pattern_notepad.databinding.FragmentCalendarBinding
 
 import com.moony.mvvm_pattern_notepad.databinding.FragmentListBinding
 
-class ListFragment: Fragment() {
+class SubjectListFragment: Fragment() {
 
     private var _binding: FragmentListBinding?=null
     private val binding get()=_binding!!
@@ -20,7 +20,7 @@ class ListFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root

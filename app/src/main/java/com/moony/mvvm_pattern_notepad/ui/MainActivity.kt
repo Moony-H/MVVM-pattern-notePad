@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportFragmentManager.commit {
-            add(R.id.activity_main_fragment_container,SubjectAddFragment())
-            addToBackStack("SubjectAddFragment")
+            add(R.id.activity_main_fragment_container,NavigationFragment())
+            addToBackStack("NavigationFragment")
         }
 
 
