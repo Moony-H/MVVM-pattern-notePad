@@ -10,13 +10,13 @@
             type="com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel" />
     </data>
     <androidx.cardview.widget.CardView
-        android:layout_marginTop="20dp"
         android:id="@+id/source_item_schedule_card_view"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{clickListener}"
         app:cardCornerRadius="30dp"
-
+        app:cardElevation="5dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

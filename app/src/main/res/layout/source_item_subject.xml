@@ -12,19 +12,20 @@
             type="android.view.View.OnClickListener" />
     </data>
     <androidx.cardview.widget.CardView
+        android:id="@+id/source_item_subject_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/color_10"
         app:cardCornerRadius="30dp"
-        app:cardElevation="30dp"
+        app:cardElevation="5dp"
         android:onClick="@{onClickListener}"
         >
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectangle_note_round"
             >
             <TextView
                 android:id="@+id/source_item_subject_name"
@@ -37,7 +38,6 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/text_dynamic_null"
-                android:textColor="@color/white"
                 android:textSize="@dimen/item_subject_name_text_size"
                 android:textStyle="bold"
 

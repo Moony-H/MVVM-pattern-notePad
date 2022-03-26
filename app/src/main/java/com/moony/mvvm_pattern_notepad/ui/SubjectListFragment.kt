@@ -8,11 +8,11 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.moony.mvvm_pattern_notepad.databinding.FragmentCalendarBinding
 
-import com.moony.mvvm_pattern_notepad.databinding.FragmentListBinding
+import com.moony.mvvm_pattern_notepad.databinding.FragmentSubjectListBinding
 
 class SubjectListFragment: Fragment() {
 
-    private var _binding: FragmentListBinding?=null
+    private var _binding: FragmentSubjectListBinding?=null
     private val binding get()=_binding!!
 
 
@@ -22,7 +22,7 @@ class SubjectListFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentListBinding.inflate(inflater, container, false)
+        _binding = FragmentSubjectListBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item_page_1"
+        android:id="@+id/item_page_schedule"
         android:enabled="true"
         android:icon="@drawable/outline_calendar_month_black_48"
         android:title="@string/menu_tab_title_1"
         />
     <item
-        android:id="@+id/item_page_2"
+        android:id="@+id/item_page_subject"
         android:enabled="true"
         android:icon="@drawable/outline_menu_book_black_48"
         android:title="@string/menu_tab_title_2"
         />
     <item
-        android:id="@+id/item_page_3"
+        android:id="@+id/item_page_record"
         android:enabled="true"
         android:icon="@drawable/outline_edit_black_48"
         android:title="@string/menu_tab_title_3"

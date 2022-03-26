@@ -13,7 +13,7 @@ import com.moony.mvvm_pattern_notepad.data.dummy.Dummy_Records
 import com.moony.mvvm_pattern_notepad.databinding.FragmentCalendarBinding
 import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
 
-class CalendarFragment:Fragment() {
+class ScheduleFragment:Fragment() {
     private val subjectViewModel: SubjectViewModel by activityViewModels()
     private var _binding: FragmentCalendarBinding?=null
     private val binding get()=_binding!!

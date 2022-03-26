@@ -11,7 +11,10 @@ interface RecordDao {
     fun insert(record: Record)
 
     @Delete
-    fun delete(record: Record)
+    fun deleteOneRecord(record: Record)
+
+    @Query("DELETE FROM Record WHERE subject_name=:name")
+    fun deleteAllSubjectRecordBySubjectName(name:String)
 
     @Query("SELECT * FROM Record WHERE date=:date")
     fun findRecordsByDate(date:String):List<Record>

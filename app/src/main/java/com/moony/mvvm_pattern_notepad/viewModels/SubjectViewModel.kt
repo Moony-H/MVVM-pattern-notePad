@@ -43,7 +43,7 @@ class SubjectViewModel @Inject constructor(
         }
     }
 
-    fun getAll(){
+    fun getAllSubject(){
         CoroutineScope(Dispatchers.IO).launch{
             val temp=subjectRepository.getAllSubject()
             Log.d("insert Complete","${temp.size}")

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 
-@Database(entities = [Subject::class, Record::class], version = 1)
+@Database(entities = [Subject::class, Record::class], version = 2)
 abstract class AppDataBase : RoomDatabase() {
     abstract fun subjectDao():SubjectDao
     abstract fun RecordDao():RecordDao
@@ -30,7 +30,7 @@ abstract class AppDataBase : RoomDatabase() {
                 context.applicationContext,
                 AppDataBase::class.java,
                 "app-database"
-            ).build()
+            ).fallbackToDestructiveMigration().build()
 
 
         }
