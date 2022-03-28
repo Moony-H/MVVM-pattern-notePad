@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val subjectViewModel:NavigationViewModel by viewModels()
+    //private val subjectViewModel:NavigationViewModel by viewModels()
     private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +30,6 @@ class MainActivity : AppCompatActivity() {
                 replace(R.id.activity_main_fragment_container,navFragment!!,FragmentTags.PAGE_NAV.fragment_tag)
             }
         }
-
-
-
-
 
     }
 

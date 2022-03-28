@@ -4,7 +4,7 @@ package com.moony.mvvm_pattern_notepad.data
 import javax.inject.Inject
 
 class RecordRepository @Inject constructor(private val recordDao:RecordDao) {
-    fun getRecordByDate(date:String):List<Record>{
+    suspend fun getRecordByDate(date:String):List<Record>{
         return recordDao.findRecordsByDate(date)
     }
 
@@ -12,14 +12,14 @@ class RecordRepository @Inject constructor(private val recordDao:RecordDao) {
         return recordDao.findRecordsBySubject(name)
     }
 
-    fun insertRecord(record: Record){
+    suspend fun insertRecord(record: Record){
         recordDao.insert(record)
     }
 
-    fun deleteOneRecordRecord(record:Record){
+    suspend fun deleteOneRecordRecord(record:Record){
         recordDao.deleteOneRecord(record)
     }
-    fun deleteAllSubjectRecordBySubjectName(name: String){
+    suspend fun deleteAllSubjectRecordBySubjectName(name: String){
         recordDao.deleteAllSubjectRecordBySubjectName(name)
     }
 

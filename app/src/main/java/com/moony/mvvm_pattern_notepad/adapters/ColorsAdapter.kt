@@ -13,7 +13,7 @@ import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
 
 
 class ColorsAdapter(val viewModel:SubjectViewModel):
-    ListAdapter<String,ColorsAdapter.ViewHolder>(PlantDiffCallback())
+    ListAdapter<String,ColorsAdapter.ViewHolder>(ColorDiffCallback())
 {
 
 
@@ -57,7 +57,7 @@ class ColorsAdapter(val viewModel:SubjectViewModel):
 
 
 }
-private class PlantDiffCallback : DiffUtil.ItemCallback<String>() {
+private class ColorDiffCallback : DiffUtil.ItemCallback<String>() {
 
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem

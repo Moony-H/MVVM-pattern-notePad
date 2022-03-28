@@ -1,24 +1,23 @@
 package com.moony.mvvm_pattern_notepad.data
 
-import android.app.Application
-import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
 class SubjectRepository @Inject constructor(private val subjectDao:SubjectDao) {
 
-    fun getAllSubject():List<Subject>{
+    fun getAllSubject(): Flow<List<Subject>> {
         return subjectDao.getAll()
     }
-    fun insertSubject(subject:Subject){
+    suspend fun insertSubject(subject:Subject){
         subjectDao.insert(subject)
     }
-    fun deleteSubject(subject: Subject){
+    suspend fun deleteSubject(subject: Subject){
         subjectDao.delete(subject)
     }
 
-    fun searchSubjectByName(name:String){
-        subjectDao.searchBySubjectName(name)
+    suspend fun searchSubjectByName(name:String){
+        subjectDao.findSubjectByName(name)
     }
 
 

@@ -2,20 +2,21 @@ package com.moony.mvvm_pattern_notepad.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SubjectDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(subject:Subject)
+    suspend fun insert(subject:Subject)
 
     @Delete
-    fun delete(subject: Subject)
+    suspend fun delete(subject: Subject)
 
     @Query("SELECT * FROM Subject")
-    fun getAll():List<Subject>
+    fun getAll():Flow<List<Subject>>
 
     @Query("SELECT * FROM Subject WHERE name=:name")
-    fun searchBySubjectName(name:String):Subject
+    suspend fun findSubjectByName(name:String):Subject
 
 }

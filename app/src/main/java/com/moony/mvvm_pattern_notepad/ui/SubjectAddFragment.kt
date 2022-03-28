@@ -1,6 +1,7 @@
 package com.moony.mvvm_pattern_notepad.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SubjectAddFragment:Fragment(),View.OnClickListener{
+    //SubjectListView가 require parent Fragment이다.(같은 인스턴스를 공유한다.)
     private val subjectViewModel:SubjectViewModel by viewModels( ownerProducer = {requireParentFragment()} )
     private lateinit var binding:FragmentSubjectAddBinding
     override fun onCreateView(
@@ -37,7 +39,7 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
             viewModel=subjectViewModel
         }
 
-        //lifecycleOwner 등록
+        //lifecycleOwner 등록(data binding 을 위해)
         binding.lifecycleOwner=this
 
         //RecyclerView 세팅
@@ -54,7 +56,7 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
 
         //버튼 click callback 세팅
         binding.fragmentSubjectAddSaveButton.setOnClickListener(this)
-        binding.testButton.setOnClickListener(this)
+        binding.fragmentSubjectAddCancelButton.setOnClickListener(this)
 
         return binding.root
 
@@ -64,18 +66,20 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
     override fun onClick(view: View?) {
 
         when(view){
+            //저장 버튼이 눌릴 시
             binding.fragmentSubjectAddSaveButton->{
                 subjectViewModel.insertSubject()
 
+                Log.d("testing","${parentFragmentManager.backStackEntryCount}")
+                parentFragmentManager.popBackStack()
             }
-            binding.testButton->{
-                subjectViewModel.getAllSubject()
-                parentFragmentManager.commit {
-                    add(R.id.activity_main_fragment_container,ScheduleFragment())
-                    addToBackStack("test")
 
-                }
+            //취소 버튼이 눌릴 시
+            binding.fragmentSubjectAddCancelButton->{
+                subjectViewModel.initCurrentSubject()
+                parentFragmentManager.popBackStack()
             }
+
         }
 
     }

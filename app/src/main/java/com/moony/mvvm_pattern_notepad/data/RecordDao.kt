@@ -8,16 +8,16 @@ import androidx.room.Query
 @Dao
 interface RecordDao {
     @Insert
-    fun insert(record: Record)
+    suspend fun insert(record: Record)
 
     @Delete
-    fun deleteOneRecord(record: Record)
+    suspend fun deleteOneRecord(record: Record)
 
     @Query("DELETE FROM Record WHERE subject_name=:name")
-    fun deleteAllSubjectRecordBySubjectName(name:String)
+    suspend fun deleteAllSubjectRecordBySubjectName(name:String)
 
     @Query("SELECT * FROM Record WHERE date=:date")
-    fun findRecordsByDate(date:String):List<Record>
+    suspend fun findRecordsByDate(date:String):List<Record>
 
     @Query("SELECT * FROM Record WHERE subject_name=:name")
     fun findRecordsBySubject(name:String):List<Record>

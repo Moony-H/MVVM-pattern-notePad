@@ -1,5 +1,6 @@
 package com.moony.mvvm_pattern_notepad.viewModels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,7 +23,7 @@ class NavigationViewModel:ViewModel() {
     private fun getPageTag(page_num:Int):FragmentTags{
         return when(page_num){
             R.id.item_page_schedule-> FragmentTags.PAGE_SCHEDULE
-            R.id.item_page_subject-> FragmentTags.PAGE_SUBJECT
+            R.id.item_page_subject-> FragmentTags.PAGE_SUBJECT_LIST
             R.id.item_page_record-> FragmentTags.PAGE_RECORD
             else -> throw IllegalArgumentException("bottom navi view not found: fragment tag")
         }
@@ -34,6 +35,11 @@ class NavigationViewModel:ViewModel() {
             return
 
         _currentPageTag.value = pageType
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.d("on","cleared")
     }
 
 }

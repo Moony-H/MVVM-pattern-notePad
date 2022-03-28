@@ -7,14 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moony.mvvm_pattern_notepad.adapters.ScheduleAdapter
 import com.moony.mvvm_pattern_notepad.data.dummy.Dummy_Records
 import com.moony.mvvm_pattern_notepad.databinding.FragmentCalendarBinding
 import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ScheduleFragment:Fragment() {
-    private val subjectViewModel: SubjectViewModel by activityViewModels()
+    private val subjectViewModel: SubjectViewModel by viewModels()
     private var _binding: FragmentCalendarBinding?=null
     private val binding get()=_binding!!
     private lateinit var adapter: ScheduleAdapter

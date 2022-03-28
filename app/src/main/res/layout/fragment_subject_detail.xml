@@ -1,101 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/base_square"
         >
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_subject_detail_sub_layout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_margin="@dimen/fragment_subject_detail_sub_layout_margin_all"
-            android:background="@drawable/rectangle_round"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            app:cardCornerRadius="50dp"
             >
-            <TextView
-                android:id="@+id/fragment_subject_detail_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_subject_detail_sub_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="27dp"
-                android:layout_marginStart="27dp"
-                android:text="@string/text_dynamic_null"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="@dimen/fragment_subject_detail_and_name_text_size"
-                 />
-            <RatingBar
-                android:id="@+id/fragment_subject_detail_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_name"
-                app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
-                android:numStars="5"
-                android:rating="5"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"
-                android:stepSize="0.5"
-                android:progressTint="@color/yellow"
-                android:secondaryProgressTint="@color/yellow"
-                android:isIndicator="true"
-                />
-            <TextView
-                android:id="@+id/fragment_subject_detail_records_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
-                app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_rating"
-                android:text="@string/fragment_subject_detail_records_text"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="25sp"
-                android:layout_marginTop="40dp"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_subject_detail_records_recycler_view"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_records_text_view"
-                app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/fragment_subject_detail_memo_text_view"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="27dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="27dp" />
-            <TextView
-                android:id="@+id/fragment_subject_detail_memo_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
-                app:layout_constraintBottom_toTopOf="@id/fragment_subject_detail_memo_edit_text"
-                android:layout_marginTop="10dp"
-                android:text="메모"
-                android:textStyle="bold"
-                android:textSize="25sp"
-                android:textColor="@color/white"
-                />
-            <EditText
-                android:id="@+id/fragment_subject_detail_memo_edit_text"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-
-                app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
-                app:layout_constraintRight_toRightOf="@id/fragment_subject_detail_records_recycler_view"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="30dp"
-                android:background="@color/white"
-                />
+                android:layout_margin="@dimen/fragment_subject_detail_sub_layout_margin_all"
+                android:background="@drawable/rectangle_round"
+                >
+                <TextView
+                    android:id="@+id/fragment_subject_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginStart="27dp"
+                    android:text="@string/text_dynamic_null"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/fragment_subject_detail_and_name_text_size"
+                    />
+                <RatingBar
+                    android:id="@+id/fragment_subject_detail_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_name"
+                    app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
+                    android:numStars="5"
+                    android:rating="5"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:stepSize="0.5"
+                    android:progressTint="@color/yellow"
+                    android:secondaryProgressTint="@color/yellow"
+                    android:isIndicator="true"
+                    />
+                <TextView
+                    android:id="@+id/fragment_subject_detail_records_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_rating"
+                    android:text="@string/fragment_subject_detail_records_text"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:layout_marginTop="40dp"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_subject_detail_records_recycler_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_records_text_view"
+                    app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_subject_detail_memo_text_view"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="27dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="27dp" />
+                <TextView
+                    android:id="@+id/fragment_subject_detail_memo_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_subject_detail_memo_edit_text"
+                    android:layout_marginTop="10dp"
+                    android:text="메모"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    />
+                <EditText
+                    android:id="@+id/fragment_subject_detail_memo_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
+                    app:layout_constraintRight_toRightOf="@id/fragment_subject_detail_records_recycler_view"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@color/white"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

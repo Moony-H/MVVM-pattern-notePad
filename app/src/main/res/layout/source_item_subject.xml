@@ -8,7 +8,7 @@
             name="viewModel"
             type="com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel" />
         <variable
-            name="onClickListener"
+            name="clickListener"
             type="android.view.View.OnClickListener" />
     </data>
     <androidx.cardview.widget.CardView
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="30dp"
         app:cardElevation="5dp"
-        android:onClick="@{onClickListener}"
+        android:onClick="@{clickListener}"
         >
 
 

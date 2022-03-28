@@ -1,7 +1,6 @@
 package com.moony.mvvm_pattern_notepad.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import java.lang.IllegalArgumentException
 class NavigationFragment:Fragment() {
     private var _binding:FragmentNavigationBinding?=null
     private val binding get()=_binding!!
-    private val navViewModel:NavigationViewModel by activityViewModels()
+    private val navViewModel:NavigationViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -80,7 +79,7 @@ class NavigationFragment:Fragment() {
     private fun createFragment(tags:FragmentTags):Fragment{
         return when(tags){
             FragmentTags.PAGE_SCHEDULE -> ScheduleFragment()
-            FragmentTags.PAGE_SUBJECT->SubjectListFragment()
+            FragmentTags.PAGE_SUBJECT_LIST->SubjectListFragment()
             FragmentTags.PAGE_RECORD->RecordFragment()
 
 
