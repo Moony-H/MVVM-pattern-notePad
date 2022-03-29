@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.moony.mvvm_pattern_notepad.R
 import com.moony.mvvm_pattern_notepad.databinding.SourceItemColorBinding
-import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
+import com.moony.mvvm_pattern_notepad.viewModels.SubjectAddViewModel
 
 
-class ColorsAdapter(val viewModel:SubjectViewModel):
+class ColorsAdapter(val viewModel: SubjectAddViewModel):
     ListAdapter<String,ColorsAdapter.ViewHolder>(ColorDiffCallback())
 {
 

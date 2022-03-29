@@ -1,5 +1,6 @@
 package com.moony.mvvm_pattern_notepad.viewModels
 
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,11 +8,15 @@ import androidx.lifecycle.ViewModel
 import com.moony.mvvm_pattern_notepad.R
 import com.moony.mvvm_pattern_notepad.Tag.FragmentTags
 import java.lang.IllegalArgumentException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NavigationViewModel:ViewModel() {
     private val _currentPageTag=MutableLiveData(FragmentTags.PAGE_SCHEDULE)
     val currentPageTag: LiveData<FragmentTags>
         get()=_currentPageTag
+
+
 
 
     fun setCurrentPage(menuItemId:Int):Boolean{

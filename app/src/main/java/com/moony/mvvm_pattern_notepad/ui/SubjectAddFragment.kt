@@ -7,21 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.moony.mvvm_pattern_notepad.R
 import com.moony.mvvm_pattern_notepad.adapters.ColorsAdapter
 import com.moony.mvvm_pattern_notepad.databinding.FragmentSubjectAddBinding
+import com.moony.mvvm_pattern_notepad.viewModels.SubjectAddViewModel
 
-import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SubjectAddFragment:Fragment(),View.OnClickListener{
     //SubjectListView가 require parent Fragment이다.(같은 인스턴스를 공유한다.)
-    private val subjectViewModel:SubjectViewModel by viewModels( ownerProducer = {requireParentFragment()} )
-    private lateinit var binding:FragmentSubjectAddBinding
+    private val subjectAddViewModel: SubjectAddViewModel by viewModels()
+    private var _binding:FragmentSubjectAddBinding?=null
+    private val binding:FragmentSubjectAddBinding
+    get()=_binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,14 +30,14 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
     ): View {
 
         //data binding
-        binding=DataBindingUtil.inflate<FragmentSubjectAddBinding>(
+        _binding=DataBindingUtil.inflate<FragmentSubjectAddBinding>(
             inflater,
             R.layout.fragment_subject_add,
             container,
             false
         ).apply {
             //데이터 바인딩에 viewModel 설정
-            viewModel=subjectViewModel
+            viewModel=subjectAddViewModel
         }
 
         //lifecycleOwner 등록(data binding 을 위해)
@@ -50,8 +51,8 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
             false
         )
 
-        val adapter=ColorsAdapter(subjectViewModel)
-        adapter.submitList(subjectViewModel.colorList)
+        val adapter=ColorsAdapter(subjectAddViewModel)
+        adapter.submitList(subjectAddViewModel.colorList)
         binding.fragmentSubjectAddColorListView.adapter=adapter
 
         //버튼 click callback 세팅
@@ -68,7 +69,7 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
         when(view){
             //저장 버튼이 눌릴 시
             binding.fragmentSubjectAddSaveButton->{
-                subjectViewModel.insertSubject()
+                subjectAddViewModel.insertSubject()
 
                 Log.d("testing","${parentFragmentManager.backStackEntryCount}")
                 parentFragmentManager.popBackStack()
@@ -76,7 +77,6 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
 
             //취소 버튼이 눌릴 시
             binding.fragmentSubjectAddCancelButton->{
-                subjectViewModel.initCurrentSubject()
                 parentFragmentManager.popBackStack()
             }
 

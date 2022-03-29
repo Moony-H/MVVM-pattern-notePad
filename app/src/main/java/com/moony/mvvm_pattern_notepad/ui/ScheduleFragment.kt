@@ -6,19 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moony.mvvm_pattern_notepad.adapters.ScheduleAdapter
-import com.moony.mvvm_pattern_notepad.data.dummy.Dummy_Records
-import com.moony.mvvm_pattern_notepad.databinding.FragmentCalendarBinding
-import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
+
+
+import com.moony.mvvm_pattern_notepad.databinding.FragmentScheduleBinding
+import com.moony.mvvm_pattern_notepad.viewModels.ScheduleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ScheduleFragment:Fragment() {
-    private val subjectViewModel: SubjectViewModel by viewModels()
-    private var _binding: FragmentCalendarBinding?=null
+    private val scheduleViewModel: ScheduleViewModel by viewModels()
+    private var _binding: FragmentScheduleBinding?=null
     private val binding get()=_binding!!
     private lateinit var adapter: ScheduleAdapter
 
@@ -29,16 +29,44 @@ class ScheduleFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentCalendarBinding.inflate(inflater, container, false)
+        _binding = FragmentScheduleBinding.inflate(inflater, container, false)
 
         //recyclerView 세팅
         binding.fragmentCalendarListView.layoutManager=LinearLayoutManager(context)
-        adapter=ScheduleAdapter(subjectViewModel)
+        adapter=ScheduleAdapter(scheduleViewModel)
         binding.fragmentCalendarListView.adapter=adapter
-        val dummy=Dummy_Records()
-        adapter.submitList(dummy.list)
+
+
+        //val dummy=Dummy_Records()
+        //adapter.submitList(dummy.list)
+
+        scheduleViewModel.currentRecord.observe(viewLifecycleOwner){
+
+            adapter.submitList(it)
+            binding.fragmentCalendarNoListText.visibility=
+                if(it.isEmpty())
+                    View.VISIBLE
+                else
+                    View.GONE
+
+        }
+
+        binding.fragmentCalendarCalendar.setOnDateChangeListener{ _, year, month, day->
+            val date=getDateToString(year,month,day)
+            scheduleViewModel.setCurrentRecordByDate(date)
+        }
+
+
+
+
+
+
         return binding.root
 
+    }
+
+    private fun getDateToString(year: Int, month: Int, day: Int): String {
+        return "$year-${month + 1}-$day"
     }
 
     override fun onDestroy() {

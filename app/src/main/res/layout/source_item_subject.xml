@@ -6,12 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel" />
+            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectListViewModel" />
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
     </data>
     <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
         android:id="@+id/source_item_subject_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

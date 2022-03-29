@@ -8,7 +8,7 @@
             type="android.view.View.OnClickListener" />
         <variable
             name="subjectViewModel"
-            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel" />
+            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectAddViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"

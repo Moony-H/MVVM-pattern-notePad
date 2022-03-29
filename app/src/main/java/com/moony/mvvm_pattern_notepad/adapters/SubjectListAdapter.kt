@@ -1,9 +1,6 @@
 package com.moony.mvvm_pattern_notepad.adapters
 
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -11,11 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.moony.mvvm_pattern_notepad.R
 import com.moony.mvvm_pattern_notepad.data.Subject
-import com.moony.mvvm_pattern_notepad.databinding.SourceItemColorBinding
 import com.moony.mvvm_pattern_notepad.databinding.SourceItemSubjectBinding
-import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
+import com.moony.mvvm_pattern_notepad.viewModels.SubjectListViewModel
 
-class SubjectListAdapter(val viewModel: SubjectViewModel):
+class SubjectListAdapter(val onItemClicked:(subject:Subject)->Unit):
     ListAdapter<Subject, SubjectListAdapter.ViewHolder>(SubjectDiffCallback())
 {
 
@@ -50,6 +46,7 @@ class SubjectListAdapter(val viewModel: SubjectViewModel):
                 sourceItemSubjectRating.rating=subject.importance
                 sourceItemSubjectCardView.setCardBackgroundColor(subject.color_int)
                 setClickListener {
+                    onItemClicked(subject)
 
                 }
             }

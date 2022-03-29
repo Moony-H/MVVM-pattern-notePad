@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel" />
+            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectAddViewModel" />
 
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout

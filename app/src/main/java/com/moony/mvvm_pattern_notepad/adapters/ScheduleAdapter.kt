@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.moony.mvvm_pattern_notepad.R
 import com.moony.mvvm_pattern_notepad.data.Record
-import com.moony.mvvm_pattern_notepad.databinding.SourceItemColorBinding
 import com.moony.mvvm_pattern_notepad.databinding.SourceItemScheduleBinding
-import com.moony.mvvm_pattern_notepad.viewModels.SubjectViewModel
+import com.moony.mvvm_pattern_notepad.viewModels.ScheduleViewModel
+import com.moony.mvvm_pattern_notepad.viewModels.SubjectListViewModel
 
-class ScheduleAdapter(private val viewModel: SubjectViewModel) :
+class ScheduleAdapter(private val listViewModel: ScheduleViewModel) :
     ListAdapter<Record, ScheduleAdapter.ViewHolder>(ScheduleDiffCallback())
 {
 
@@ -27,7 +27,7 @@ class ScheduleAdapter(private val viewModel: SubjectViewModel) :
                 parent,
                 false
             ).apply {
-                vm=viewModel
+                vm=listViewModel
             }
         )
 
