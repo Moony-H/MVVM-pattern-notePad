@@ -46,7 +46,7 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
         //RecyclerView 세팅
         binding.fragmentSubjectAddColorListView.layoutManager=GridLayoutManager(
             context,
-            2,
+            4,
             GridLayoutManager.HORIZONTAL,
             false
         )

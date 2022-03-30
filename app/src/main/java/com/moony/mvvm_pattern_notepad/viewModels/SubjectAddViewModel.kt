@@ -29,11 +29,12 @@ class SubjectAddViewModel @Inject constructor(
 
     init {
         val color=colorList[0]
-        val temp=Subject("",0.0F,"",color, Color.parseColor(color))
+        val temp=Subject("",0.0F,"",color, Color.parseColor(color),100,0)
         _currentSubject.value=temp
     }
 
     fun insertSubject(){
+
         viewModelScope.launch(Dispatchers.IO) {
             val done=launch {
                 _currentSubject.value?.let {
@@ -49,7 +50,7 @@ class SubjectAddViewModel @Inject constructor(
 
     fun setColor(string: String){
         _currentSubject.value?.let {
-            val subject=Subject(it.name,it.importance,it.memo,string,Color.parseColor(string))
+            val subject=Subject(it.name,it.importance,it.memo,string,Color.parseColor(string),it.progress_rate_max,it.progress_rate)
             _currentSubject.value=subject
         }
     }

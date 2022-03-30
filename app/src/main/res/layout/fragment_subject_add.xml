@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
+    android:clickable="true"
+    android:focusable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
 
     >
+
     <data>
         <variable
             name="viewModel"
             type="com.moony.mvvm_pattern_notepad.viewModels.SubjectAddViewModel" />
-
+        <import type="com.moony.mvvm_pattern_notepad.util.Converter"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -95,23 +98,54 @@
                     android:isIndicator="false"
                     />
                 <TextView
-                    android:id="@+id/fragment_subject_add_color_text_view"
+                    android:id="@+id/fragment_subject_add_progress_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="@id/fragment_subject_add_name"
                     app:layout_constraintTop_toBottomOf="@id/fragment_subject_add_rating"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_subject_add_color_text_view"
+                    android:text="총 진행도:"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    />
+                <EditText
+                    android:id="@+id/fragment_subject_add_progress_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/fragment_subject_add_progress_text"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_subject_add_progress_text"
+                    app:layout_constraintTop_toTopOf="@id/fragment_subject_add_progress_text"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginRight="50dp"
+                    android:hint="숫자"
+                    android:textStyle="bold"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:text="@={Converter.intToString(viewModel.currentSubject.progress_rate_max)}"
+                    />
+                <TextView
+                    android:id="@+id/fragment_subject_add_color_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/fragment_subject_add_name"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_add_progress_text"
                     android:text="색상"
                     android:textStyle="bold"
                     android:textSize="25sp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="20dp"
                     />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/fragment_subject_add_color_list_view"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     app:layout_constraintTop_toBottomOf="@id/fragment_subject_add_color_text_view"
                     app:layout_constraintLeft_toLeftOf="@id/fragment_subject_add_name"
                     app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_subject_add_memo_text_view"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="27dp"
                     android:layout_marginEnd="27dp" />
@@ -119,6 +153,7 @@
                     android:id="@+id/fragment_subject_add_memo_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_add_color_list_view"
                     app:layout_constraintLeft_toLeftOf="@id/fragment_subject_add_name"
                     app:layout_constraintBottom_toTopOf="@id/fragment_subject_add_memo_edit_text"
                     android:layout_marginTop="10dp"
@@ -129,8 +164,9 @@
                 <EditText
                     android:id="@+id/fragment_subject_add_memo_edit_text"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="0dp"
                     android:gravity="top"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_add_memo_text_view"
                     app:layout_constraintLeft_toLeftOf="@id/fragment_subject_add_name"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"

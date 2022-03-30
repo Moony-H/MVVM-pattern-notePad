@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,7 +42,7 @@ class SubjectListFragment: Fragment(),View.OnClickListener {
                     SubjectDetailFragment(),
                     FragmentTags.PAGE_SUBJECT_DETAIL.fragment_tag
                 )
-                addToBackStack(FragmentTags.PAGE_SUBJECT_ADD.fragment_tag)
+                addToBackStack(FragmentTags.PAGE_SUBJECT_DETAIL.fragment_tag)
             }
 
         }
@@ -65,10 +66,14 @@ class SubjectListFragment: Fragment(),View.OnClickListener {
 
     override fun onClick(view: View?) {
         when(view){
+
             binding.fragmentSubjectListAddButton->{
-                childFragmentManager.commit {
+
+                val frag=parentFragment
+
+                frag?.parentFragmentManager?.commit {
                     add(
-                        R.id.fragment_subject_list_container,
+                        R.id.activity_main_fragment_container,
                         SubjectAddFragment(),
                         FragmentTags.PAGE_SUBJECT_ADD.fragment_tag
                     )

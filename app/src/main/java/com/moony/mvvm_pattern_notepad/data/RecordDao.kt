@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecordDao {
@@ -17,10 +18,10 @@ interface RecordDao {
     suspend fun deleteAllSubjectRecordBySubjectName(name:String)
 
     @Query("SELECT * FROM Record WHERE date=:date")
-    suspend fun findRecordsByDate(date:String):List<Record>
+    fun findRecordsByDate(date:String): Flow<List<Record>>
 
     @Query("SELECT * FROM Record WHERE subject_name=:name")
-    fun findRecordsBySubject(name:String):List<Record>
+    fun findRecordsBySubjectName(name:String):Flow<List<Record>>
 
 
 

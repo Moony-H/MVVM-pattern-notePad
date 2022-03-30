@@ -40,15 +40,18 @@ class ScheduleFragment:Fragment() {
         //val dummy=Dummy_Records()
         //adapter.submitList(dummy.list)
 
-        scheduleViewModel.currentRecord.observe(viewLifecycleOwner){
+        scheduleViewModel.currentRecord.let{
+            it.observe(viewLifecycleOwner){ records->
 
-            adapter.submitList(it)
-            binding.fragmentCalendarNoListText.visibility=
-                if(it.isEmpty())
-                    View.VISIBLE
-                else
-                    View.GONE
 
+                adapter.submitList(records)
+                binding.fragmentCalendarNoListText.visibility=
+                    if(records.isEmpty())
+                        View.VISIBLE
+                    else
+                        View.GONE
+
+            }
         }
 
         binding.fragmentCalendarCalendar.setOnDateChangeListener{ _, year, month, day->

@@ -1,9 +1,6 @@
 package com.moony.mvvm_pattern_notepad.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.moony.mvvm_pattern_notepad.data.Record
 import com.moony.mvvm_pattern_notepad.data.RecordRepository
 import com.moony.mvvm_pattern_notepad.data.Subject
@@ -18,7 +15,7 @@ import javax.inject.Inject
 class ScheduleViewModel @Inject constructor(
     private val recordRepository: RecordRepository
     ):ViewModel() {
-    private val _currentRecord= MutableLiveData<List<Record>>()
+    private var _currentRecord:LiveData<List<Record>>
     val currentRecord: LiveData<List<Record>>
         get()=_currentRecord
 
@@ -28,13 +25,13 @@ class ScheduleViewModel @Inject constructor(
     init {
         dataFormat.timeZone=tz
         today=dataFormat.format(Date())
-        setCurrentRecordByDate(today)
+        _currentRecord=recordRepository.getRecordByDate(today).asLiveData()
+
+
     }
 
     fun setCurrentRecordByDate(date:String){
-        viewModelScope.launch (Dispatchers.IO){
-            _currentRecord.postValue(recordRepository.getRecordByDate(date))
-        }
+        _currentRecord=recordRepository.getRecordByDate(date).asLiveData()
 
     }
 }

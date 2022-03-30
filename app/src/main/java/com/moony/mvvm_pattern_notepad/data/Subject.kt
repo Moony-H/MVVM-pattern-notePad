@@ -11,8 +11,9 @@ data class Subject(
         var importance:Float,
         var memo:String,
         var color: String,
-        var color_int:Int
-
+        var color_int:Int,
+        var progress_rate_max:Int,
+        var progress_rate:Int
 ){
 
 }

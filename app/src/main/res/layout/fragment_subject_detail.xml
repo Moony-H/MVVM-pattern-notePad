@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
+    android:clickable="true"
+    android:focusable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <data>
         <variable
             name="vm"
-            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectAddViewModel" />
+            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectListViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,6 +21,7 @@
             android:layout_height="match_parent"
             android:layout_margin="15dp"
             app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="@{vm.selectedSubject.color_int}"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +44,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="27dp"
                     android:layout_marginStart="27dp"
-                    android:text="@string/text_dynamic_null"
+                    android:text="@{vm.selectedSubject.name}"
 
                     android:textStyle="bold"
                     android:textSize="@dimen/fragment_subject_detail_and_name_text_size"
@@ -80,19 +83,41 @@
                     app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_name"
                     app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
                     android:numStars="5"
-                    android:rating="5"
+                    android:rating="@{vm.selectedSubject.importance}"
                     style="@style/Widget.AppCompat.RatingBar.Indicator"
-                    android:stepSize="0.5"
+
                     android:progressTint="@color/yellow"
                     android:secondaryProgressTint="@color/yellow"
                     android:isIndicator="true"
+                    />
+                <TextView
+                    android:id="@+id/fragment_subject_detail_progress_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_rating"
+                    app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
+                    android:text="진행률"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    />
+                <ProgressBar
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_progress_text"
+                    app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_subject_detail_records_text_view"
+                    app:layout_constraintRight_toRightOf="@id/fragment_subject_detail_rating"
+                    android:scaleY="3.5"
+                    android:max="@{vm.selectedSubject.progress_rate_max}"
+                    android:progress="@{vm.selectedSubject.progress_rate}"
                     />
                 <TextView
                     android:id="@+id/fragment_subject_detail_records_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
-                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_rating"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_progress_text"
                     android:text="@string/fragment_subject_detail_records_text"
 
                     android:textStyle="bold"
@@ -133,6 +158,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
                     android:background="@color/white"
+                    android:text="@{vm.selectedSubject.memo}"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,6 +4,8 @@ import android.graphics.Color
 import androidx.lifecycle.*
 import com.moony.mvvm_pattern_notepad.RecordApplication
 import com.moony.mvvm_pattern_notepad.R
+import com.moony.mvvm_pattern_notepad.data.Record
+import com.moony.mvvm_pattern_notepad.data.RecordRepository
 import com.moony.mvvm_pattern_notepad.data.Subject
 import com.moony.mvvm_pattern_notepad.data.SubjectRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SubjectListViewModel @Inject constructor(
-    private val subjectRepository: SubjectRepository
+    private val subjectRepository: SubjectRepository,
+    private val recordRepository: RecordRepository
     ):ViewModel(){
 
 
@@ -31,6 +34,9 @@ class SubjectListViewModel @Inject constructor(
     val selectedSubject:LiveData<Subject>
         get()=_selectedSubject
 
+    private var _selectedSubjectRecord:LiveData<List<Record>>?=null
+    val selectedSubjectRecord:LiveData<List<Record>>?
+        get()=_selectedSubjectRecord
 
 
     fun deleteSubject(subject: Subject){
@@ -47,6 +53,9 @@ class SubjectListViewModel @Inject constructor(
 
     fun setSelectedSubject(subject: Subject){
         _selectedSubject.value=subject
+        viewModelScope.launch(Dispatchers.IO){
+            _selectedSubjectRecord=recordRepository.getRecordBySubjectName(_selectedSubject.value!!.name).asLiveData()
+        }
     }
 
 }
