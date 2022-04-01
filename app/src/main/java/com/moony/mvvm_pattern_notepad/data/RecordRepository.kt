@@ -23,5 +23,8 @@ class RecordRepository @Inject constructor(private val recordDao:RecordDao) {
     suspend fun deleteAllSubjectRecordBySubjectName(name: String){
         recordDao.deleteAllSubjectRecordBySubjectName(name)
     }
+    suspend fun getAllRecord():List<Record>{
+        return recordDao.getAllRecord()
+    }
 
 }

@@ -1,14 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:focusable="true">
     <data>
         <variable
             name="vm"
             type="com.moony.mvvm_pattern_notepad.viewModels.RecordViewModel" />
+        <import type="com.moony.mvvm_pattern_notepad.util.StringIntConverter"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@drawable/rectangle_note_round"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/fragment_record_add_guide"
+            app:layout_constraintGuide_percent="0.5"
+
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:id="@+id/fragment_record_add_save_button"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_sub_rectangle_round"
+            android:text="저장"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/fragment_record_add_cancel_button"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_record_add_save_button"
+            app:layout_constraintRight_toRightOf="@id/fragment_record_add_save_button"
+            android:text="취소"
+            android:gravity="center"
+            android:background="@drawable/button_sub_rectangle_round"
+            app:layout_constraintTop_toBottomOf="@id/fragment_record_add_save_button"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/fragment_record_add_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fragment_record_add_save_button"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_record_add_cancel_button"
+            app:layout_constraintRight_toLeftOf="@id/fragment_record_add_guide"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:text="@{vm.selectedSubject.name}"
+            android:textStyle="bold"
+
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp" />
+        <TextView
+            android:id="@+id/fragment_record_add_rate_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_record_add_name"
+
+            android:text="오늘의 진도율:"
+            android:textSize="25sp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+             />
+        <EditText
+            android:layout_width="70sp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/fragment_record_add_rate_today"
+
+            app:layout_constraintTop_toTopOf="@id/fragment_record_add_rate_today"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_record_add_rate_today"
+            android:inputType="number"
+            android:text="@={StringIntConverter.intToString(vm.selectedSubject.progress_rate)}"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:maxLength="4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/fragment_record_add_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공부 시간"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_record_add_rate_today"
+            app:layout_constraintTop_toBottomOf="@id/fragment_record_add_rate_today"
+            app:layout_constraintBottom_toTopOf="@id/fragment_record_add_memo"
+            />
+        <EditText
+            android:id="@+id/fragment_record_add_time_start_h"
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="@={vm.currentRecord.start_time_h}"
+            android:maxLength="2"
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_record_add_time"
+            app:layout_constraintRight_toLeftOf="@id/fragment_record_add_time_start_m"
+            android:layout_marginTop="10dp"
+            android:nextFocusDown="@id/fragment_record_add_time_start_m"
+            />
+        <EditText
+            android:id="@+id/fragment_record_add_time_start_m"
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="@={vm.currentRecord.start_time_m}"
+            android:maxLength="2"
+            android:inputType="number"
+            app:layout_constraintLeft_toRightOf="@id/fragment_record_add_time_start_h"
+            app:layout_constraintRight_toLeftOf="@id/fragment_record_add_time_and"
+            app:layout_constraintTop_toTopOf="@id/fragment_record_add_time_start_h"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_record_add_time_start_h"
+            android:nextFocusRight="@id/fragment_record_add_time_end_h"
+            />
+        <TextView
+            android:id="@+id/fragment_record_add_time_and"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" ~ "
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/fragment_record_add_time_start_m"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_record_add_time_start_m"
+            app:layout_constraintLeft_toRightOf="@id/fragment_record_add_time_start_m"
+            app:layout_constraintRight_toLeftOf="@id/fragment_record_add_time_end_h"
+
+            />
+        <EditText
+            android:id="@+id/fragment_record_add_time_end_h"
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="@={vm.currentRecord.end_time_h}"
+            android:maxLength="2"
+            android:inputType="number"
+            app:layout_constraintLeft_toRightOf="@id/fragment_record_add_time_and"
+            app:layout_constraintRight_toLeftOf="@id/fragment_record_add_time_end_m"
+            app:layout_constraintTop_toTopOf="@id/fragment_record_add_time_start_h"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_record_add_time_start_h"
+            android:nextFocusRight="@id/fragment_record_add_time_end_m"
+            />
+        <EditText
+            android:id="@+id/fragment_record_add_time_end_m"
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="@={vm.currentRecord.end_time_m}"
+            android:maxLength="2"
+            android:inputType="number"
+            app:layout_constraintLeft_toRightOf="@id/fragment_record_add_time_end_h"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fragment_record_add_time_start_h"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_record_add_time_start_h"
+            android:imeOptions="actionDone"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/fragment_record_add_time_start_h"
+            app:layout_constraintRight_toLeftOf="@id/fragment_record_add_time_start_m"
+            app:layout_constraintTop_toTopOf="@id/fragment_record_add_time_start_h"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_record_add_time_start_h"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/fragment_record_add_time_end_h"
+            app:layout_constraintRight_toLeftOf="@id/fragment_record_add_time_end_m"
+            app:layout_constraintTop_toTopOf="@id/fragment_record_add_time_end_h"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_record_add_time_end_h"
+            />
+        <TextView
+            android:id="@+id/fragment_record_add_memo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="한줄 메모"
+            android:textSize="25sp"
+
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_record_add_rate_today"
+            app:layout_constraintTop_toBottomOf="@id/fragment_record_add_time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        <EditText
+            android:id="@+id/fragment_record_add_memo_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/fragment_record_add_memo"
+            app:layout_constraintLeft_toLeftOf="@id/fragment_record_add_rate_today"
+            android:textSize="20sp"
+            android:maxLines="1"
+            app:layout_constraintRight_toRightOf="@id/fragment_record_add_cancel_button"
+            android:text="@={vm.currentRecord.memo}"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

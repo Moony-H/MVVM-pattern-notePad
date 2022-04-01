@@ -20,5 +20,9 @@ class SubjectRepository @Inject constructor(private val subjectDao:SubjectDao) {
         subjectDao.findSubjectByName(name)
     }
 
+    suspend fun updateSubject(subject: Subject){
+        subjectDao.updateSubject(subject)
+    }
+
 
 }

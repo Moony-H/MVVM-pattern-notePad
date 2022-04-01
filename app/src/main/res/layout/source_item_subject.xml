@@ -41,7 +41,8 @@
                 android:text="@string/text_dynamic_null"
                 android:textSize="@dimen/item_subject_name_text_size"
                 android:textStyle="bold"
-
+                android:ellipsize="end"
+                android:maxLines="1"
                  />
             <RatingBar
                 android:id="@+id/source_item_subject_rating"

@@ -16,6 +16,9 @@ interface SubjectDao {
     @Query("SELECT * FROM Subject")
     fun getAll():Flow<List<Subject>>
 
+    @Update
+    suspend fun updateSubject(subject: Subject)
+
     @Query("SELECT * FROM Subject WHERE name=:name")
     suspend fun findSubjectByName(name:String):Subject
 

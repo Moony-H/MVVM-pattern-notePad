@@ -68,7 +68,10 @@
                 android:text="@string/text_dynamic_null"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp" />
+                android:layout_marginStart="10dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                />
             <TextView
                 android:id="@+id/source_item_schedule_memo_text"
                 android:layout_width="0dp"
@@ -79,6 +82,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/source_item_schedule_time_text"
                 android:textSize="20sp"
                 android:text="@string/text_dynamic_null"
+                android:ellipsize="end"
+                android:maxLines="1"
                 />
 
 

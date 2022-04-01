@@ -1,11 +1,11 @@
 package com.moony.mvvm_pattern_notepad.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.moony.mvvm_pattern_notepad.data.Record
 import com.moony.mvvm_pattern_notepad.databinding.SourceItemRecordBinding
+import com.moony.mvvm_pattern_notepad.util.TimeConverter
 
 class SubjectDetailRecordAdapter(val list:List<Record>):RecyclerView.Adapter<SubjectDetailRecordAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,7 +21,13 @@ class SubjectDetailRecordAdapter(val list:List<Record>):RecyclerView.Adapter<Sub
     }
     inner class ViewHolder(val binding:SourceItemRecordBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(record:Record){
-            val recordDate=record.date+" "+record.start_time+" ~ "+record.end_time
+            val time=TimeConverter.convertFullTimeFormat(
+                record.start_time_h,
+                record.start_time_m,
+                record.end_time_h,
+                record.end_time_m
+            )
+            val recordDate=record.date+" "+time
             binding.sourceItemRecordDate.text= recordDate
             binding.sourceItemRecordNote.text=record.memo
         }

@@ -23,6 +23,7 @@ interface RecordDao {
     @Query("SELECT * FROM Record WHERE subject_name=:name")
     fun findRecordsBySubjectName(name:String):Flow<List<Record>>
 
-
+    @Query("SELECT * FROM Record")
+    fun getAllRecord():List<Record>
 
 }

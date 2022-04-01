@@ -45,7 +45,8 @@
                     android:layout_marginLeft="27dp"
                     android:layout_marginStart="27dp"
                     android:text="@{vm.selectedSubject.name}"
-
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:textStyle="bold"
                     android:textSize="@dimen/fragment_subject_detail_and_name_text_size"
                     />
