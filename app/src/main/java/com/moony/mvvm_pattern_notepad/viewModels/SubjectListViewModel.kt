@@ -30,8 +30,8 @@ class SubjectListViewModel @Inject constructor(
         get()=_allSubject
 
 
-    private val _selectedSubject=MutableLiveData<Subject>()
-    val selectedSubject:LiveData<Subject>
+    private var _selectedSubject=Subject("",0.0F,"","",0,0,0)
+    val selectedSubject:Subject
         get()=_selectedSubject
 
     private var _selectedSubjectRecord:LiveData<List<Record>>?=null
@@ -52,9 +52,9 @@ class SubjectListViewModel @Inject constructor(
     }
 
     fun setSelectedSubject(subject: Subject){
-        _selectedSubject.value=subject
+        _selectedSubject=subject
         viewModelScope.launch(Dispatchers.IO){
-            _selectedSubjectRecord=recordRepository.getRecordBySubjectName(_selectedSubject.value!!.name).asLiveData()
+            _selectedSubjectRecord=recordRepository.getRecordBySubjectName(_selectedSubject.name).asLiveData()
         }
     }
 

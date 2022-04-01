@@ -12,7 +12,7 @@
         <variable
             name="viewModel"
             type="com.moony.mvvm_pattern_notepad.viewModels.SubjectAddViewModel" />
-        <import type="com.moony.mvvm_pattern_notepad.util.Converter"/>
+        <import type="com.moony.mvvm_pattern_notepad.util.StringIntConverter"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -125,7 +125,7 @@
                     android:textStyle="bold"
                     android:inputType="number"
                     android:maxLength="4"
-                    android:text="@={Converter.intToString(viewModel.currentSubject.progress_rate_max)}"
+                    android:text="@={StringIntConverter.intToString(viewModel.currentSubject.progress_rate_max)}"
                     />
                 <TextView
                     android:id="@+id/fragment_subject_add_color_text_view"

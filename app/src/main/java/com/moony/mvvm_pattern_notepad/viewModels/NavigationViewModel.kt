@@ -8,8 +8,6 @@ import androidx.lifecycle.ViewModel
 import com.moony.mvvm_pattern_notepad.R
 import com.moony.mvvm_pattern_notepad.Tag.FragmentTags
 import java.lang.IllegalArgumentException
-import java.text.SimpleDateFormat
-import java.util.*
 
 class NavigationViewModel:ViewModel() {
     private val _currentPageTag=MutableLiveData(FragmentTags.PAGE_SCHEDULE)
@@ -29,7 +27,7 @@ class NavigationViewModel:ViewModel() {
         return when(page_num){
             R.id.item_page_schedule-> FragmentTags.PAGE_SCHEDULE
             R.id.item_page_subject-> FragmentTags.PAGE_SUBJECT_LIST
-            R.id.item_page_record-> FragmentTags.PAGE_RECORD
+            R.id.item_page_record-> FragmentTags.PAGE_RECORD_LIST
             else -> throw IllegalArgumentException("bottom navi view not found: fragment tag")
         }
 

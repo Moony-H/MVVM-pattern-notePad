@@ -10,7 +10,9 @@ import com.moony.mvvm_pattern_notepad.RecordApplication
 import com.moony.mvvm_pattern_notepad.data.Subject
 import com.moony.mvvm_pattern_notepad.data.SubjectRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -34,15 +36,15 @@ class SubjectAddViewModel @Inject constructor(
     }
 
     fun insertSubject(){
+        //보통 insert를 하고 fragment와 ViewModel을 종료하는 경우가 많다.
+        //viewModelScope로 하면 viewModel이 Fragment와 함께 Destroy 되는 시점에 같이 멈춘다.
+        //따라서 아주 가끔 저장이 되지 않는다.
+        //그래서 viewModel과 상관 없는 Coroutine Scope를 사용한다.
 
-        viewModelScope.launch(Dispatchers.IO) {
-            val done=launch {
-                _currentSubject.value?.let {
-                    subjectRepository.insertSubject(it)
-                }
+        CoroutineScope(Dispatchers.IO).launch {
+            _currentSubject.value?.let {
+                subjectRepository.insertSubject(it)
             }
-            //완료를 기다리기
-            done.join()
 
         }
 

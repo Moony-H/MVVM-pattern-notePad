@@ -3,7 +3,7 @@ package com.moony.mvvm_pattern_notepad.util
 import android.widget.EditText
 import androidx.databinding.InverseMethod
 
-object Converter {
+object StringIntConverter {
     @InverseMethod("stringToInt")
     @JvmStatic fun intToString(
         value: Int

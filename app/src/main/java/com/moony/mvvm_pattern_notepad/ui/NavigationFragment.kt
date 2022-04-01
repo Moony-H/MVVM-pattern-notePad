@@ -80,7 +80,7 @@ class NavigationFragment:Fragment() {
         return when(tags){
             FragmentTags.PAGE_SCHEDULE -> ScheduleFragment()
             FragmentTags.PAGE_SUBJECT_LIST->SubjectListFragment()
-            FragmentTags.PAGE_RECORD->RecordFragment()
+            FragmentTags.PAGE_RECORD_LIST->RecordListFragment()
 
 
             else -> throw IllegalArgumentException("bottom navi view not found: fragment tag")

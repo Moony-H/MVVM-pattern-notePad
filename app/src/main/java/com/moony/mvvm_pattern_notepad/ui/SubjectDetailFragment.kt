@@ -75,7 +75,8 @@ class SubjectDetailFragment: Fragment(),View.OnClickListener {
                 parentFragmentManager.popBackStack()
             }
             binding.fragmentSubjectDetailDeleteButton->{
-                viewModel.selectedSubject.value?.let { viewModel.deleteSubject(it) }
+                viewModel.deleteSubject(viewModel.selectedSubject)
+
                 parentFragmentManager.popBackStack()
             }
         }

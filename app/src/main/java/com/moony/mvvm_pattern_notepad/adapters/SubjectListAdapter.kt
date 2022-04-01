@@ -59,13 +59,3 @@ class SubjectListAdapter(val onItemClicked:(subject:Subject)->Unit):
 
 
 }
-private class SubjectDiffCallback : DiffUtil.ItemCallback<Subject>() {
-
-    override fun areItemsTheSame(oldItem: Subject, newItem: Subject): Boolean {
-        return oldItem.name == newItem.name
-    }
-
-    override fun areContentsTheSame(oldItem: Subject, newItem: Subject): Boolean {
-        return oldItem == newItem
-    }
-}
