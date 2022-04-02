@@ -9,6 +9,8 @@ import com.moony.mvvm_pattern_notepad.data.Record
 import com.moony.mvvm_pattern_notepad.data.RecordRepository
 import com.moony.mvvm_pattern_notepad.data.Subject
 import com.moony.mvvm_pattern_notepad.data.SubjectRepository
+import com.moony.mvvm_pattern_notepad.util.DateConverter
+import com.moony.mvvm_pattern_notepad.util.TimeConverter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.CoroutineScope
@@ -36,20 +38,10 @@ class RecordViewModel @Inject constructor(
     private val _currentRecord=MutableLiveData<Record>()
     val currentRecord:LiveData<Record>
         get()=_currentRecord
-    private val tz= TimeZone.getTimeZone("Asia/Seoul")
-    private val dataFormat= SimpleDateFormat("yyyy-mm-dd",)
-    private val today:String
+
 
     init {
-        dataFormat.timeZone=tz
-        today=dataFormat.format(Date())
-        _currentRecord.value=Record(
-            selectedSubject.name,
-            _selectedSubject.color,
-            today,
-            "","","","",""
-        )
-        Log.d("init","done ${_currentRecord.value}")
+        initRecord()
     }
 
     fun setSelectedSubject(subject:Subject){
@@ -99,7 +91,7 @@ class RecordViewModel @Inject constructor(
         _currentRecord.value=Record(
             selectedSubject.name,
             _selectedSubject.color,
-            today,
+            DateConverter.getNowDate(),
             "00","00","00","00",""
         )
     }

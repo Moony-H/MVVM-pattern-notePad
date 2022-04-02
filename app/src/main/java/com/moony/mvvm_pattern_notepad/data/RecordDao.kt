@@ -18,7 +18,7 @@ interface RecordDao {
     suspend fun deleteAllSubjectRecordBySubjectName(name:String)
 
     @Query("SELECT * FROM Record WHERE date=:date")
-    fun findRecordsByDate(date:String): Flow<List<Record>>
+    suspend fun findRecordsByDate(date:String): List<Record>
 
     @Query("SELECT * FROM Record WHERE subject_name=:name")
     fun findRecordsBySubjectName(name:String):Flow<List<Record>>

@@ -10,5 +10,6 @@ class TimeConverter {
         fun convertOneTime(h:String,m:String):String{
             return "$h:$m"
         }
+
     }
 }

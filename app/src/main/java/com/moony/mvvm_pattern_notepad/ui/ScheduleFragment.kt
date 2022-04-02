@@ -12,6 +12,7 @@ import com.moony.mvvm_pattern_notepad.adapters.ScheduleAdapter
 
 
 import com.moony.mvvm_pattern_notepad.databinding.FragmentScheduleBinding
+import com.moony.mvvm_pattern_notepad.util.DateConverter
 import com.moony.mvvm_pattern_notepad.viewModels.ScheduleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,22 +41,21 @@ class ScheduleFragment:Fragment() {
         //val dummy=Dummy_Records()
         //adapter.submitList(dummy.list)
 
-        scheduleViewModel.currentRecord.let{
-            it.observe(viewLifecycleOwner){ records->
-
-
-                adapter.submitList(records)
-                binding.fragmentCalendarNoListText.visibility=
-                    if(records.isEmpty())
-                        View.VISIBLE
-                    else
-                        View.GONE
-
-            }
+        scheduleViewModel.currentRecord.observe(viewLifecycleOwner){ records->
+            Log.d("testing","observed")
+            Log.d("testing","$records")
+            adapter.submitList(records)
+            binding.fragmentCalendarNoListText.visibility=
+                if(records.isEmpty())
+                    View.VISIBLE
+                else
+                    View.GONE
         }
 
         binding.fragmentCalendarCalendar.setOnDateChangeListener{ _, year, month, day->
-            val date=getDateToString(year,month,day)
+            Log.d("calendar","clicked")
+            val date=DateConverter.convertDateToString(year,month,day)
+            Log.d("date is", date)
             scheduleViewModel.setCurrentRecordByDate(date)
         }
 
@@ -68,13 +68,24 @@ class ScheduleFragment:Fragment() {
 
     }
 
+
+
     private fun getDateToString(year: Int, month: Int, day: Int): String {
+        var m=month.toString()
+        if (m.length<2){
+            m= "0$m"
+        }
+
         return "$year-${month + 1}-$day"
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null;
+        _binding=null
+    }
+
+    fun init(){
+        scheduleViewModel.setCurrentRecordByDate()
     }
 
 }

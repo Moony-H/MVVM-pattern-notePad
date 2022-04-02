@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class RecordRepository @Inject constructor(private val recordDao:RecordDao) {
-    fun getRecordByDate(date:String):Flow<List<Record>>{
+    suspend fun getRecordByDate(date:String):List<Record>{
         return recordDao.findRecordsByDate(date)
     }
 
