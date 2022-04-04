@@ -58,6 +58,9 @@ class RecordViewModel @Inject constructor(
 
 
     fun updateSubject(){
+        // 저장한 후 바로 Fragment 가 종료된다.
+        //ViewModelScope 를 사용하면 저장하지 못하고 종료되는 경우가 종종 생긴다.
+        //따라서 CoroutineScope 를 사용하여 종료가 되도 요청을 IO 스레드풀이 수행할 수 있게 하였다.
         CoroutineScope(Dispatchers.IO).launch {
             val done=launch {
                 subjectRepository.updateSubject(_selectedSubject)
