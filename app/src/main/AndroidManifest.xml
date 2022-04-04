@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.moony.mvvm_pattern_notepad">
+    package="com.moony.mvvmstudyrecordapp">
 
     <application
-        android:name=".RecordApplication"
+        android:name="com.moony.mvvmstudyrecordapp.RecordApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MVVMpatternnotePad">
+        android:theme="@style/Theme.MVVMStudyRecordApp">
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.moony.mvvmstudyrecordapp.ui.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.MVVMpatternnotePad.NoActionBar"
+            android:theme="@style/Theme.MVVMStudyRecordApp.NoActionBar"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"
             >

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectListViewModel" />
+            type="com.moony.mvvmstudyrecordapp.viewModels.SubjectListViewModel" />
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />

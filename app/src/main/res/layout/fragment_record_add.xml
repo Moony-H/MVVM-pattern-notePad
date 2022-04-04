@@ -6,8 +6,8 @@
     <data>
         <variable
             name="vm"
-            type="com.moony.mvvm_pattern_notepad.viewModels.RecordViewModel" />
-        <import type="com.moony.mvvm_pattern_notepad.util.StringIntConverter"/>
+            type="com.moony.mvvmstudyrecordapp.viewModels.RecordViewModel" />
+        <import type="com.moony.mvvmstudyrecordapp.util.StringIntConverter"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/rectangle_note_round"
@@ -229,6 +229,7 @@
             app:layout_constraintLeft_toLeftOf="@id/fragment_record_add_rate_today"
             android:textSize="20sp"
             android:maxLines="1"
+            android:lines="1"
             app:layout_constraintRight_toRightOf="@id/fragment_record_add_cancel_button"
             android:text="@={vm.currentRecord.memo}"
             />

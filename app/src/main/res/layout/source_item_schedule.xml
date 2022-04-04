@@ -7,7 +7,7 @@
             type="android.view.View.OnClickListener" />
         <variable
             name="vm"
-            type="com.moony.mvvm_pattern_notepad.viewModels.ScheduleViewModel" />
+            type="com.moony.mvvmstudyrecordapp.viewModels.ScheduleViewModel" />
     </data>
     <androidx.cardview.widget.CardView
         android:id="@+id/source_item_schedule_card_view"

@@ -11,8 +11,8 @@
     <data>
         <variable
             name="viewModel"
-            type="com.moony.mvvm_pattern_notepad.viewModels.SubjectAddViewModel" />
-        <import type="com.moony.mvvm_pattern_notepad.util.StringIntConverter"/>
+            type="com.moony.mvvmstudyrecordapp.viewModels.SubjectAddViewModel" />
+        <import type="com.moony.mvvmstudyrecordapp.util.StringIntConverter"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
