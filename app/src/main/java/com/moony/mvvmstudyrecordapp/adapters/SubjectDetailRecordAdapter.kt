@@ -2,23 +2,24 @@ package com.moony.mvvmstudyrecordapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.moony.mvvmstudyrecordapp.data.Record
 import com.moony.mvvmstudyrecordapp.databinding.SourceItemRecordBinding
 import com.moony.mvvmstudyrecordapp.util.TimeConverter
 
-class SubjectDetailRecordAdapter(val list:List<Record>):RecyclerView.Adapter<SubjectDetailRecordAdapter.ViewHolder>() {
+class SubjectDetailRecordAdapter:
+    ListAdapter<Record,SubjectDetailRecordAdapter.ViewHolder>(RecordDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(SourceItemRecordBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+
     inner class ViewHolder(val binding:SourceItemRecordBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(record:Record){
             val time=TimeConverter.convertFullTimeFormat(

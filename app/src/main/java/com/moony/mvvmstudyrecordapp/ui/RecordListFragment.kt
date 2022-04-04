@@ -31,7 +31,7 @@ class RecordListFragment:Fragment() {
 
         _binding = FragmentRecordSubjectListBinding.inflate(inflater, container, false)
         adapter= RecordSubjectAdapter{
-            Log.d("is selected","subject $it")
+
             viewModel.setSelectedSubject(it)
             childFragmentManager.commit {
                 add(

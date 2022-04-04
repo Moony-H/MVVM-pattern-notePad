@@ -6,6 +6,7 @@ import com.moony.mvvmstudyrecordapp.data.RecordRepository
 import com.moony.mvvmstudyrecordapp.data.Subject
 import com.moony.mvvmstudyrecordapp.data.SubjectRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,38 +21,33 @@ class SubjectListViewModel @Inject constructor(
 
 
 
-
     private val _allSubject=subjectRepository.getAllSubject().asLiveData()
     val allSubject:LiveData<List<Subject>>
         get()=_allSubject
 
 
-    private var _selectedSubject=Subject("",0.0F,"","",0,0,0)
-    val selectedSubject:Subject
+    private var _selectedSubject= MutableLiveData(Subject("",0.0F,"","",0,0,0))//
+    val selectedSubject:LiveData<Subject>
         get()=_selectedSubject
 
-    private var _selectedSubjectRecord:LiveData<List<Record>>?=null
-    val selectedSubjectRecord:LiveData<List<Record>>?
+
+    private var _selectedSubjectRecord =_selectedSubject.switchMap {
+        recordRepository.getRecordBySubjectName(it.name).asLiveData()
+    }
+    val selectedSubjectRecord:LiveData<List<Record>>
         get()=_selectedSubjectRecord
 
 
-    fun deleteSubject(subject: Subject){
-        viewModelScope.launch(Dispatchers.IO) {
-            val done=launch {
-                subjectRepository.deleteSubject(subject)
-            }
+    fun deleteSubject(){
+        CoroutineScope(Dispatchers.IO).launch {
+            _selectedSubject.value?.let { subjectRepository.deleteSubject(it) }
 
-            //완료를 기다리기
-            done.join()
         }
 
     }
 
     fun setSelectedSubject(subject: Subject){
-        _selectedSubject=subject
-        viewModelScope.launch(Dispatchers.IO){
-            _selectedSubjectRecord=recordRepository.getRecordBySubjectName(_selectedSubject.name).asLiveData()
-        }
+        _selectedSubject.value=subject
     }
 
 }

@@ -75,7 +75,7 @@ class RecordViewModel @Inject constructor(
             val done=async {
                 recordRepository.getAllRecord()
             }
-            Log.d("all record","${done.await()}")
+
         }
 
     }

@@ -1,13 +1,36 @@
 package com.moony.mvvmstudyrecordapp.data.dummy
 
-import com.moony.mvvmstudyrecordapp.data.DateFormat
+
 import com.moony.mvvmstudyrecordapp.data.Record
+import com.moony.mvvmstudyrecordapp.util.DateConverter
 
 class Dummy_Records {
     val list= mutableListOf<Record>()
+    val subjects=Dummy_Subject().list
     init {
-        for(i in 1..20){
-            list.add(Record("수학","",DateFormat.getDateFormat(2022,4,9),"14","00","16","00","공부함"))
+        subjects.forEachIndexed { index, subject ->
+            var time=0
+            for(i in 0+index..4+index){
+                time++
+                list.add(
+                    Record(
+                        subject.name,
+                        subject.color,
+                        "2022-04-0${i%5+1}",
+                        "1${time}",
+                        "00",
+                        "1${time+1}",
+                        "00",
+                        "${subject.name} 공부함"
+                    )
+                )
+            }
+
         }
+
+
+
+
+
     }
 }

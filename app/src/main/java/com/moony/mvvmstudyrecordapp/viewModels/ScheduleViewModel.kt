@@ -1,5 +1,6 @@
 package com.moony.mvvmstudyrecordapp.viewModels
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.moony.mvvmstudyrecordapp.data.Record
 import com.moony.mvvmstudyrecordapp.data.RecordRepository
@@ -21,6 +22,7 @@ class ScheduleViewModel @Inject constructor(
 
 
     private var _currentRecord=_currentDate.switchMap { query->
+
         recordRepository.getRecordByDate(query).asLiveData()
     }
     val currentRecord: LiveData<List<Record>>

@@ -16,7 +16,7 @@ import com.moony.mvvmstudyrecordapp.util.TimeConverter
 import com.moony.mvvmstudyrecordapp.viewModels.ScheduleViewModel
 
 class ScheduleAdapter(private val listViewModel: ScheduleViewModel) :
-    ListAdapter<Record, ScheduleAdapter.ViewHolder>(ScheduleDiffCallback())
+    ListAdapter<Record, ScheduleAdapter.ViewHolder>(RecordDiffCallback())
 {
 
 
@@ -43,7 +43,7 @@ class ScheduleAdapter(private val listViewModel: ScheduleViewModel) :
 
     inner class ViewHolder(val binding: SourceItemScheduleBinding) : RecyclerView.ViewHolder(binding.root){
 
-        @SuppressLint("SetTextI18n")
+        @SuppressLint("SetTextI18n", "Range")
         fun bind(record: Record){
             val start=TimeConverter.convertOneTime(
                 record.start_time_h,
@@ -55,7 +55,6 @@ class ScheduleAdapter(private val listViewModel: ScheduleViewModel) :
             )
 
             binding.apply {
-                Log.d("testing","$record")
                 sourceItemScheduleCardView.setCardBackgroundColor(Color.parseColor(record.subject_color))
                 sourceItemScheduleTimeText.text=start+"\n"+end
                 sourceItemScheduleSubjectText.text=record.subject_name
@@ -71,17 +70,6 @@ class ScheduleAdapter(private val listViewModel: ScheduleViewModel) :
     }
 
 
-
-
-}
-private class ScheduleDiffCallback : DiffUtil.ItemCallback<Record>() {
-    override fun areItemsTheSame(oldItem: Record, newItem: Record): Boolean {
-        return oldItem.id==newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: Record, newItem: Record): Boolean {
-        return false
-    }
 
 
 }

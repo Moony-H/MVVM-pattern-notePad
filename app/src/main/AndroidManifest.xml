@@ -23,6 +23,11 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".ui.TestActivity"
+            android:exported="true">
+
+
+        </activity>
     </application>
 
 </manifest>

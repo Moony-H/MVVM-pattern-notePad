@@ -71,7 +71,7 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
             binding.fragmentSubjectAddSaveButton->{
                 subjectAddViewModel.insertSubject()
 
-                Log.d("testing","${parentFragmentManager.backStackEntryCount}")
+
                 parentFragmentManager.popBackStack()
             }
 

@@ -6,11 +6,11 @@ import javax.inject.Inject
 
 class RecordRepository @Inject constructor(private val recordDao:RecordDao) {
     fun getRecordByDate(date:String):Flow<List<Record>>{
-        return recordDao.findRecordsByDate(date)
+        return recordDao.getRecordsByDate(date)
     }
 
     fun getRecordBySubjectName(name:String): Flow<List<Record>> {
-        return recordDao.findRecordsBySubjectName(name)
+        return recordDao.getRecordsBySubjectName(name)
     }
 
     suspend fun insertRecord(record: Record){
@@ -25,6 +25,10 @@ class RecordRepository @Inject constructor(private val recordDao:RecordDao) {
     }
     suspend fun getAllRecord():List<Record>{
         return recordDao.getAllRecord()
+    }
+
+    suspend fun deleteAllRecord(){
+        recordDao.deleteAllRecord()
     }
 
 }

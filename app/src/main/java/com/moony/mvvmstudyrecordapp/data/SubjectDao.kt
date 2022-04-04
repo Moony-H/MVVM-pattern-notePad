@@ -1,5 +1,6 @@
 package com.moony.mvvmstudyrecordapp.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -19,6 +20,6 @@ interface SubjectDao {
     suspend fun updateSubject(subject: Subject)
 
     @Query("SELECT * FROM Subject WHERE name=:name")
-    suspend fun findSubjectByName(name:String):Subject
+    suspend fun getSubjectByName(name:String): Subject
 
 }

@@ -17,13 +17,16 @@ interface RecordDao {
     @Query("DELETE FROM Record WHERE subject_name=:name")
     suspend fun deleteAllSubjectRecordBySubjectName(name:String)
 
-    @Query("SELECT * FROM Record WHERE date=:date")
-    fun findRecordsByDate(date:String): Flow<List<Record>>
+    @Query("SELECT * FROM Record WHERE date=:date ORDER BY start_time_h")
+    fun getRecordsByDate(date:String): Flow<List<Record>>
 
-    @Query("SELECT * FROM Record WHERE subject_name=:name")
-    fun findRecordsBySubjectName(name:String):Flow<List<Record>>
+    @Query("SELECT * FROM Record WHERE subject_name=:name ORDER BY start_time_h")
+    fun getRecordsBySubjectName(name:String):Flow<List<Record>>
 
     @Query("SELECT * FROM Record")
-    fun getAllRecord():List<Record>
+    suspend fun getAllRecord():List<Record>
+
+    @Query("DELETE FROM Record")
+    suspend fun deleteAllRecord()
 
 }

@@ -20,7 +20,7 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "com.moony.mvvm_pattern_notepad"
+        applicationId "com.moony.mvvmstudyrecordapp"
         minSdkVersion 16
         targetSdkVersion 31
         versionCode 1

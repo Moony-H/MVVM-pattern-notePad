@@ -44,8 +44,8 @@ class ScheduleFragment:Fragment() {
         //adapter.submitList(dummy.list)
 
         scheduleViewModel.currentRecord.observe(viewLifecycleOwner){ records->
-            Log.d("testing","observed")
-            Log.d("testing","$records")
+
+
             adapter.submitList(records)
             binding.fragmentCalendarNoListText.visibility=
                 if(records.isEmpty())
@@ -55,13 +55,6 @@ class ScheduleFragment:Fragment() {
         }
 
         binding.fragmentCalendarCalendar.setOnDateChangeListener{ _, year, month, day->
-            //Log.d("calendar","clicked")
-            //val date=DateConverter.convertDateToString(year,month,day)
-            //Log.d("date is", date)
-            //Log.d("testing change","before ${scheduleViewModel.currentRecord.value}")
-            //scheduleViewModel.setCurrentRecordByDate(date)
-            //Log.d("testing change","after ${scheduleViewModel.currentRecord.value}")
-            //adapter.submitList(scheduleViewModel.currentRecord.value)
             val date=DateConverter.convertDateToString(year,month,day)
             scheduleViewModel.setCurrentDate(date)
         }
