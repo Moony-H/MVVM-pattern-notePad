@@ -20,7 +20,7 @@ interface RecordDao {
     @Query("SELECT * FROM Record WHERE date=:date ORDER BY start_time_h")
     fun getRecordsByDate(date:String): Flow<List<Record>>
 
-    @Query("SELECT * FROM Record WHERE subject_name=:name ORDER BY start_time_h")
+    @Query("SELECT * FROM Record WHERE subject_name=:name ORDER BY date,start_time_h")
     fun getRecordsBySubjectName(name:String):Flow<List<Record>>
 
     @Query("SELECT * FROM Record")

@@ -44,7 +44,7 @@ class RecordListFragment:Fragment() {
         }
         binding.fragmentRecordSubjectListList.layoutManager=GridLayoutManager(
             context,
-            5,GridLayoutManager.HORIZONTAL,
+            2,GridLayoutManager.VERTICAL,
             false
         )
         binding.fragmentRecordSubjectListList.adapter=adapter

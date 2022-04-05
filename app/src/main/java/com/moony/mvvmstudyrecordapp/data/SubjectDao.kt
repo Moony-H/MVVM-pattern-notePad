@@ -13,8 +13,8 @@ interface SubjectDao {
     @Delete
     suspend fun delete(subject: Subject)
 
-    @Query("SELECT * FROM Subject")
-    fun getAll():Flow<List<Subject>>
+    @Query("SELECT * FROM Subject ORDER BY name ASC")
+    fun getAllSubject():Flow<List<Subject>>
 
     @Update
     suspend fun updateSubject(subject: Subject)

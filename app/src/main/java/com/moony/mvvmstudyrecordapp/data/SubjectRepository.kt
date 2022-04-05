@@ -8,7 +8,7 @@ import javax.inject.Inject
 class SubjectRepository @Inject constructor(private val subjectDao:SubjectDao) {
 
     fun getAllSubject(): Flow<List<Subject>> {
-        return subjectDao.getAll()
+        return subjectDao.getAllSubject()
     }
     suspend fun insertSubject(subject:Subject){
         subjectDao.insert(subject)

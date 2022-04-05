@@ -33,7 +33,6 @@ class SubjectListViewModel @Inject constructor(
 
 
     private var _selectedSubjectDetail= _selectedSubject.switchMap {
-        Log.d("data","switch")
         subjectRepository.getSubjectByName(it.name)
     }
     val selectedSubjectDetail:LiveData<Subject>
