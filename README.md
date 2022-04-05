@@ -70,6 +70,10 @@ Dagger-Hilt
 
 <br/>
 
+![navi](https://user-images.githubusercontent.com/53536205/161763241-9a2cacc4-d6af-4974-abe1-a2aaf260b560.gif)
+
+<br/>
+
 <br/>
 
 ### 2. 과목 등록
@@ -77,6 +81,10 @@ Dagger-Hilt
 과목을 등록할 수 있습니다.
 
 과목 이름, 중요도, 진행도, 구분 지을 색, 과목에 대한 설명을 적어 등록할 수 있습니다.
+
+<br/>
+
+![SubjectAdd](https://user-images.githubusercontent.com/53536205/161763336-617b7619-7fe9-4232-9ce8-b218a331291b.gif)
 
 <br/>
 
@@ -90,9 +98,11 @@ Dagger-Hilt
 
 <br/>
 
+![subjectDetail](https://user-images.githubusercontent.com/53536205/161763466-046fee0f-42aa-4e33-9149-224b5fe0ddd5.gif)
+
 <br/>
 
-
+<br/>
 
 ### 4.  공부 기록
 
@@ -108,6 +118,10 @@ Dagger-Hilt
 
 <br/>
 
+![record add](https://user-images.githubusercontent.com/53536205/161763577-02f93810-1770-476e-b51e-18c1d6ff4b08.gif)
+
+<br/>
+
 <br/>
 
 ### 5. 이전 기록 보기
@@ -116,3 +130,28 @@ Dagger-Hilt
 
 오늘 날짜의 공부 기록은 등록한 즉시 반영됩니다.
 
+<br/>
+
+![schedule](https://user-images.githubusercontent.com/53536205/161763661-ee4bb3b1-9544-4ba4-9df4-3fbd5f872ecf.gif)
+
+<br/>
+
+<br/>
+
+
+
+### 6. 과목 삭제
+
+과목을 삭제합니다.
+
+공부했던 기록은 그대로 남습니다.
+
+마찬가지로 즉시 목록에 삭제가 반영됩니다.
+
+<br/>
+
+![delete subject](https://user-images.githubusercontent.com/53536205/161764040-63dee0ed-2d9a-46b4-abe2-9823884e16e2.gif)
+
+<br/>
+
+<br/>
