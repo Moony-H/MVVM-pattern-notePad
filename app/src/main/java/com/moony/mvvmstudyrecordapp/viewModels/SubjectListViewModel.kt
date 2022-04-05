@@ -1,5 +1,6 @@
 package com.moony.mvvmstudyrecordapp.viewModels
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.moony.mvvmstudyrecordapp.data.Record
 import com.moony.mvvmstudyrecordapp.data.RecordRepository
@@ -31,6 +32,14 @@ class SubjectListViewModel @Inject constructor(
         get()=_selectedSubject
 
 
+    private var _selectedSubjectDetail= _selectedSubject.switchMap {
+        Log.d("data","switch")
+        subjectRepository.getSubjectByName(it.name)
+    }
+    val selectedSubjectDetail:LiveData<Subject>
+        get()=_selectedSubjectDetail
+
+
     private var _selectedSubjectRecord =_selectedSubject.switchMap {
         recordRepository.getRecordBySubjectName(it.name).asLiveData()
     }
@@ -49,5 +58,6 @@ class SubjectListViewModel @Inject constructor(
     fun setSelectedSubject(subject: Subject){
         _selectedSubject.value=subject
     }
+
 
 }

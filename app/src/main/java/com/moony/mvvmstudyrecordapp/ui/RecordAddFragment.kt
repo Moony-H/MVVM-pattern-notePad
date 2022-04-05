@@ -34,6 +34,8 @@ class RecordAddFragment: Fragment(),View.OnClickListener {
             //데이터 바인딩에 viewModel 설정
             vm=viewModel
         }
+        
+        binding.lifecycleOwner=this
 
         binding.fragmentRecordAddSaveButton.setOnClickListener(this)
         binding.fragmentRecordAddCancelButton.setOnClickListener(this)

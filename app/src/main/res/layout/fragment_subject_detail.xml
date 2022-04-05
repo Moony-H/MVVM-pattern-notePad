@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_margin="15dp"
             app:cardCornerRadius="50dp"
-            app:cardBackgroundColor="@{vm.selectedSubject.color_int}"
+            app:cardBackgroundColor="@{vm.selectedSubjectDetail.color_int}"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +44,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="27dp"
                     android:layout_marginStart="27dp"
-                    android:text="@{vm.selectedSubject.name}"
+                    android:text="@{vm.selectedSubjectDetail.name}"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:textStyle="bold"
@@ -84,7 +84,7 @@
                     app:layout_constraintTop_toBottomOf="@id/fragment_subject_detail_name"
                     app:layout_constraintLeft_toLeftOf="@id/fragment_subject_detail_name"
                     android:numStars="5"
-                    android:rating="@{vm.selectedSubject.importance}"
+                    android:rating="@{vm.selectedSubjectDetail.importance}"
                     style="@style/Widget.AppCompat.RatingBar.Indicator"
 
                     android:progressTint="@color/yellow"
@@ -110,8 +110,8 @@
                     app:layout_constraintBottom_toTopOf="@id/fragment_subject_detail_records_text_view"
                     app:layout_constraintRight_toRightOf="@id/fragment_subject_detail_rating"
                     android:scaleY="3.5"
-                    android:max="@{vm.selectedSubject.progress_rate_max}"
-                    android:progress="@{vm.selectedSubject.progress_rate}"
+                    android:max="@{vm.selectedSubjectDetail.progress_rate_max}"
+                    android:progress="@{vm.selectedSubjectDetail.progress_rate}"
                     />
                 <TextView
                     android:id="@+id/fragment_subject_detail_records_text_view"
@@ -159,7 +159,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
                     android:background="@color/white"
-                    android:text="@{vm.selectedSubject.memo}"
+                    android:text="@{vm.selectedSubjectDetail.memo}"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -41,7 +41,7 @@ class SubjectDetailFragment: Fragment(),View.OnClickListener {
         ).apply {
             vm=viewModel
         }
-
+        binding.lifecycleOwner=this
 
         binding.fragmentSubjectDetailCloseButton.setOnClickListener(this)
         binding.fragmentSubjectDetailDeleteButton.setOnClickListener(this)

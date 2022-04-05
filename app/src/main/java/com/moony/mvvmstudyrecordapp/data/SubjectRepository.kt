@@ -17,7 +17,7 @@ class SubjectRepository @Inject constructor(private val subjectDao:SubjectDao) {
         subjectDao.delete(subject)
     }
 
-    suspend fun getSubjectByName(name:String): Subject {
+    fun getSubjectByName(name:String): LiveData<Subject> {
         return subjectDao.getSubjectByName(name)
     }
 

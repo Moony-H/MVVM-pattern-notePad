@@ -20,6 +20,6 @@ interface SubjectDao {
     suspend fun updateSubject(subject: Subject)
 
     @Query("SELECT * FROM Subject WHERE name=:name")
-    suspend fun getSubjectByName(name:String): Subject
+    fun getSubjectByName(name:String): LiveData<Subject>
 
 }
