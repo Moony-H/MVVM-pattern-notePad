@@ -38,15 +38,24 @@
 
 <br/>
 
+<<<<<<< HEAD
 BottomNavigationView와 Fragment 관리
 
 <br/>
 
 DataBinding 사용
+=======
+전체 데이터 흐름(Coroutine Flow, livedata, Room)
 
 <br/>
 
-전체 데이터 흐름(Coroutine Flow, livedata, Room)
+BottomNavigationView와 Fragment 관리
+>>>>>>> b58d1777db4dd36a2a5a7d5310b131360a58e270
+
+<br/>
+
+DataBinding
+
 
 <br/>
 
@@ -56,6 +65,9 @@ Coroutine
 
 Dagger-Hilt
 
+<br/>
+
+<br/>
 
 
 
