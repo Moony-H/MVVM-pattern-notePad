@@ -51,7 +51,6 @@ class RecordAddFragment: Fragment(),View.OnClickListener {
                 parentFragmentManager.popBackStack()
             }
             binding.fragmentRecordAddCancelButton->{
-                viewModel.getAllRecord()
                 parentFragmentManager.popBackStack()
             }
         }
