@@ -34,36 +34,31 @@
 
 ## 핵심 기능 구현
 
-기술을 어떻게 사용했는지, 어떤 방법으로 구현했는지에 대한 설명은 아래의 링크에서 확인하실 수 있습니다.
+기술을 어떻게 사용했는지, 어떤 방법으로 구현했는지에 대한 설명은 아래의 wiki 링크에서 확인하실 수 있습니다.
 
 <br/>
 
-<<<<<<< HEAD
-BottomNavigationView와 Fragment 관리
+[Wiki Home](https://github.com/Moony-H/MVVMStudyRecordApp/wiki)
 
 <br/>
 
-DataBinding 사용
-=======
-전체 데이터 흐름(Coroutine Flow, livedata, Room)
+[전체 데이터 흐름과 Architecture(Coroutine Flow, livedata, Room)](https://github.com/Moony-H/MVVMStudyRecordApp/wiki/1.-%EC%A0%84%EC%B2%B4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%9D%90%EB%A6%84%EA%B3%BC-Architecture-(MVVM,-livedata,-Coroutine-Flow,-Room))
 
 <br/>
 
-BottomNavigationView와 Fragment 관리
->>>>>>> b58d1777db4dd36a2a5a7d5310b131360a58e270
+[BottomNavigationView와 Fragment 관리](https://github.com/Moony-H/MVVMStudyRecordApp/wiki/2.-BottomNavigationView%EC%99%80-Fragment-%EA%B4%80%EB%A6%AC)
 
 <br/>
 
-DataBinding
-
-
-<br/>
-
-Coroutine
+[DataBinding](https://github.com/Moony-H/MVVMStudyRecordApp/wiki/3.-DataBinding)
 
 <br/>
 
-Dagger-Hilt
+[Coroutine](https://github.com/Moony-H/MVVMStudyRecordApp/wiki/4.-Coroutine)
+
+<br/>
+
+[Dagger-Hilt](https://github.com/Moony-H/MVVMStudyRecordApp/wiki/Dagger-Hilt)
 
 <br/>
 
@@ -71,7 +66,7 @@ Dagger-Hilt
 
 
 
-## 앱의 기능
+## 기능 설명
 
 <br/>
 
