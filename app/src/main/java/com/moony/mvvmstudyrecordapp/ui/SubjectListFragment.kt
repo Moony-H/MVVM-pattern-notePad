@@ -47,7 +47,7 @@ class SubjectListFragment: Fragment(),View.OnClickListener {
         }
         binding.fragmentSubjectListListView.adapter=adapter
 
-        //Live Data 관찰.
+        //Recycler view 의 요소를 바꾸기 위해 변경 불가능한 Live Data 관찰.
         subjectListViewModel.allSubject.observe(viewLifecycleOwner){
             adapter.submitList(it)
         }

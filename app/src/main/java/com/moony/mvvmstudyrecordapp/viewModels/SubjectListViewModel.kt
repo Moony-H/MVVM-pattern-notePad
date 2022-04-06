@@ -9,6 +9,7 @@ import com.moony.mvvmstudyrecordapp.data.SubjectRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +23,9 @@ class SubjectListViewModel @Inject constructor(
 
 
 
-    private val _allSubject=subjectRepository.getAllSubject().asLiveData()
+    private val _allSubject:LiveData<List<Subject>> = subjectRepository.getAllSubject().asLiveData()
+
+    //subjectRepository.getAllSubject().asLiveData()
     val allSubject:LiveData<List<Subject>>
         get()=_allSubject
 
@@ -33,7 +36,7 @@ class SubjectListViewModel @Inject constructor(
 
 
     private var _selectedSubjectDetail= _selectedSubject.switchMap {
-        subjectRepository.getSubjectByName(it.name)
+        subjectRepository.getSubjectByName(it.name).asLiveData()
     }
     val selectedSubjectDetail:LiveData<Subject>
         get()=_selectedSubjectDetail

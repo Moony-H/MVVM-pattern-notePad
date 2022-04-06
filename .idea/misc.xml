@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/moony/AndroidStudioProjects/MVVMStudyRecordApp/app/src/main/res/layout/activity_main.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/moony/AndroidStudioProjects/MVVMStudyRecordApp/app/src/main/res/layout/fragment_navigation.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/moony/AndroidStudioProjects/MVVMStudyRecordApp/app/src/main/res/layout/fragment_record_add.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/moony/AndroidStudioProjects/MVVMStudyRecordApp/app/src/main/res/layout/fragment_subject_add.xml" value="0.13903985507246377" />
         <entry key="..\:/Users/moony/AndroidStudioProjects/MVVMStudyRecordApp/app/src/main/res/layout/fragment_subject_detail.xml" value="0.17806484295845998" />

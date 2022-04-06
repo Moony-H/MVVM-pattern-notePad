@@ -2,6 +2,7 @@ package com.moony.mvvmstudyrecordapp.data
 
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 
@@ -17,13 +18,14 @@ class SubjectRepository @Inject constructor(private val subjectDao:SubjectDao) {
         subjectDao.delete(subject)
     }
 
-    fun getSubjectByName(name:String): LiveData<Subject> {
+    fun getSubjectByName(name:String): Flow<Subject> {
         return subjectDao.getSubjectByName(name)
     }
 
     suspend fun updateSubject(subject: Subject){
         subjectDao.updateSubject(subject)
     }
+
 
 
 }

@@ -4,14 +4,12 @@
     android:focusable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-
     >
-
     <data>
         <variable
             name="viewModel"
             type="com.moony.mvvmstudyrecordapp.viewModels.SubjectAddViewModel" />
+
         <import type="com.moony.mvvmstudyrecordapp.util.StringIntConverter"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +32,7 @@
                 android:background="@drawable/rectangle_round"
 
                 >
-
+                <!-- 양뱡향 데이터 바인딩 사용 -->
                 <EditText
                     android:id="@+id/fragment_subject_add_name"
                     android:layout_width="0dp"
@@ -50,6 +48,7 @@
                     android:hint="과목 이름"
                     android:textStyle="bold"
                     android:textSize="@dimen/fragment_subject_detail_and_name_text_size"
+
                     android:text="@={viewModel.currentSubject.name}"
                     android:maxLines="1"
                     />

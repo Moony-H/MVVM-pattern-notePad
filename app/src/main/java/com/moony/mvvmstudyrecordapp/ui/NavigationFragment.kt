@@ -24,11 +24,13 @@ class NavigationFragment:Fragment() {
 
         _binding= FragmentNavigationBinding.inflate(inflater,container,false)
 
+        //네비게이션이 클릭되면 클릭된 버튼의 Id를 저장해 놓는다.
         binding.fragmentNavigationNavi.setOnItemSelectedListener {
             navViewModel.setCurrentPage(it.itemId)
-            true
+
         }
 
+        //저장된 id를 관찰하여, id가 바뀌면(사용자가 클릭하면) Fragment를 전환한다.
         navViewModel.currentPageTag.observe(viewLifecycleOwner){ it ->
             binding.fragmentNavigationNavi.selectedItemId
             changeFragment(it)
@@ -51,18 +53,23 @@ class NavigationFragment:Fragment() {
 
     private fun changeFragment(tags:FragmentTags){
 
-
         childFragmentManager.commit {
+
+            //사용자가 원하는 Fragment를 tag로 받고, 그것이 존재하는지 찾는다.
             var targetFragment=childFragmentManager.findFragmentByTag(tags.fragment_tag)
 
             targetFragment?:run{
-                //프래그먼트가 단 한번도 생성 되지 않았을 경우
+                //프래그먼트가 단 한 개도 생성되지 않았을 경우, ScheduleFragment를 기본으로 생성한다.
                 targetFragment=ScheduleFragment()
+                //Fragment add
                 add(R.id.fragment_navigation_container,createFragment(tags),tags.fragment_tag)
 
             }
+
+            //단순히 show, hide로 사용자가 원하는 Fragment만 보이게 만든다.
             show(targetFragment!!)
 
+            //filterNot으로 show 한 Fragment(사용자가 요청한 Fragment)만 건너 뛰고, 나머지 Fragment들은 hide 한다.
             FragmentTags.values()
                 .filterNot { it==tags }
                 .forEach { type->

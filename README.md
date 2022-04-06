@@ -36,11 +36,13 @@
 
 기술을 어떻게 사용했는지, 어떤 방법으로 구현했는지에 대한 설명은 아래의 링크에서 확인하실 수 있습니다.
 
+<br/>
+
 BottomNavigationView와 Fragment 관리
 
 <br/>
 
-DataBinding
+DataBinding 사용
 
 <br/>
 
@@ -53,6 +55,7 @@ Coroutine
 <br/>
 
 Dagger-Hilt
+
 
 
 
