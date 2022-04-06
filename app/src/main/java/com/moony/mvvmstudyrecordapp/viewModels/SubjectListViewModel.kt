@@ -25,7 +25,7 @@ class SubjectListViewModel @Inject constructor(
 
     private val _allSubject:LiveData<List<Subject>> = subjectRepository.getAllSubject().asLiveData()
 
-    //subjectRepository.getAllSubject().asLiveData()
+
     val allSubject:LiveData<List<Subject>>
         get()=_allSubject
 
