@@ -3,7 +3,9 @@ package com.moony.mvvmstudyrecordapp.data
 
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RecordRepository @Inject constructor(private val recordDao:RecordDao) {
     fun getRecordByDate(date:String):Flow<List<Record>>{
         return recordDao.getRecordsByDate(date)

@@ -10,8 +10,9 @@ import androidx.fragment.app.viewModels
 import com.moony.mvvmstudyrecordapp.R
 import com.moony.mvvmstudyrecordapp.databinding.FragmentRecordAddBinding
 import com.moony.mvvmstudyrecordapp.viewModels.RecordViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RecordAddFragment: Fragment(),View.OnClickListener {
     private var _binding: FragmentRecordAddBinding?=null
     private val binding:FragmentRecordAddBinding

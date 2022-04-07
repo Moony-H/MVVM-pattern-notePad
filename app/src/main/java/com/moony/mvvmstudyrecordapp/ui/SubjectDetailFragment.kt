@@ -18,7 +18,9 @@ import com.moony.mvvmstudyrecordapp.adapters.SubjectDetailRecordAdapter
 import com.moony.mvvmstudyrecordapp.data.dummy.Dummy_Records
 
 import com.moony.mvvmstudyrecordapp.viewModels.SubjectListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SubjectDetailFragment: Fragment(),View.OnClickListener {
 
     private val viewModel: SubjectListViewModel by viewModels( ownerProducer = {requireParentFragment()} )

@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
-
+@Singleton
 class SubjectRepository @Inject constructor(private val subjectDao:SubjectDao) {
 
     fun getAllSubject(): Flow<List<Subject>> {

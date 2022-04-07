@@ -9,8 +9,10 @@ import com.moony.mvvmstudyrecordapp.R
 import com.moony.mvvmstudyrecordapp.Tag.FragmentTags
 import com.moony.mvvmstudyrecordapp.databinding.FragmentNavigationBinding
 import com.moony.mvvmstudyrecordapp.viewModels.NavigationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.IllegalArgumentException
 
+@AndroidEntryPoint
 class NavigationFragment:Fragment() {
     private var _binding:FragmentNavigationBinding?=null
     private val binding get()=_binding!!

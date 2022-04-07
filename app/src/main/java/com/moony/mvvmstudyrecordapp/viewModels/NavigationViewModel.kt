@@ -2,14 +2,16 @@ package com.moony.mvvmstudyrecordapp.viewModels
 
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.moony.mvvmstudyrecordapp.R
 import com.moony.mvvmstudyrecordapp.Tag.FragmentTags
 import java.lang.IllegalArgumentException
+import javax.inject.Inject
 
-class NavigationViewModel:ViewModel() {
+class NavigationViewModel @Inject constructor():ViewModel() {
     private val _currentPageTag=MutableLiveData(FragmentTags.PAGE_SCHEDULE)
     val currentPageTag: LiveData<FragmentTags>
         get()=_currentPageTag
