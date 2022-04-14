@@ -62,7 +62,10 @@ class SubjectAddFragment:Fragment(),View.OnClickListener{
         return binding.root
 
     }
-
+    override fun onDestroyView(){
+        super.onDestroyView()
+        _binding=null
+    }
 
     override fun onClick(view: View?) {
 

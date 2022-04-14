@@ -79,8 +79,8 @@ class ScheduleFragment:Fragment() {
         return "$year-${month + 1}-$day"
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView(){
+        super.onDestroyView()
         _binding=null
     }
 

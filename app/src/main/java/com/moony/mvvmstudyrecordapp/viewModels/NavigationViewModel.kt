@@ -8,9 +8,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.moony.mvvmstudyrecordapp.R
 import com.moony.mvvmstudyrecordapp.Tag.FragmentTags
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
-
+@HiltViewModel
 class NavigationViewModel @Inject constructor():ViewModel() {
     private val _currentPageTag=MutableLiveData(FragmentTags.PAGE_SCHEDULE)
     val currentPageTag: LiveData<FragmentTags>

@@ -43,9 +43,9 @@ class NavigationFragment:Fragment() {
         return binding.root
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
 
-        super.onDestroy()
+        super.onDestroyView()
         _binding=null
     }
 

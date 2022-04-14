@@ -42,6 +42,10 @@ class RecordAddFragment: Fragment(),View.OnClickListener {
         binding.fragmentRecordAddCancelButton.setOnClickListener(this)
         return binding.root
     }
+    override fun onDestroyView(){
+        super.onDestroyView()
+        _binding=null
+    }
 
     override fun onClick(view: View?) {
         when (view){
